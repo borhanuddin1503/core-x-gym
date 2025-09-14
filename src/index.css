@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@font-face {
+    font-family: 'jakarta';
+    src: url(./assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-VariableFont_wght.ttf);
+}
+
+:root {
+    --main: #FDC700;
+    --stroke: #DADADA;
+    --white: white;
+    --black: black;
+    --cream: #FAFDF0;
+    --gray200: #CFC6C5;
+    --silver: #BCC6CC;
+    --thin-yellow: #FEFCE8;
+    --root-bg: #F8F9FA;
+}
+
+@theme {
+    --font-jakarta: 'jakarta', 'sans-serif';
+    --color-main: var(--main);
+    --color-stroke: var(--stroke);
+    --color-white: var(--white);
+    --color-black: var(--black);
+    --color-cream: var(--cream);
+    --color-gray200: var(--gray200);
+    --color-silver: var(--silver);
+    --color-thin-yellow: var(--thin-yellow);
+    --color-root-bg: var(--root-bg);
+}
+
+
+
+
+@media (max-width:1280px){
+    :root{
+        font-size: 15px;
+    }
+}
+@media (max-width:1024px){
+    :root{
+        font-size: 13.5px;
+    }
+}
+@media (max-width: 640px) {
+    :root {
+        font-size: 12px;
+    }
+}
