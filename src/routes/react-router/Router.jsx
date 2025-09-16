@@ -6,6 +6,7 @@ import Home from "../../pages/Home/Home";
 import AllClasses from "../../pages/all classes/AllClasses";
 import PrivateRoute from "../private-routes/PrivateRoute";
 import BeATrainer from "../../pages/be a trainer/BeATrainer";
+import Trainers from "../../pages/trainers/Trainers";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ export const router = createBrowserRouter([
       {
         path:'be-a-trainer',
         element:<PrivateRoute><BeATrainer></BeATrainer></PrivateRoute>
-      }
+      },
+      {
+        path:'trainers',
+        Component: Trainers
+      },
     ]
   },
 ]);

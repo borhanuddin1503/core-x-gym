@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select, { components } from "react-select";
 import UseAuth from "../../custom hooks/UseAuth";
@@ -6,6 +6,7 @@ import axios from "axios";
 import useSecureAxios from "../../services/Axios/SecureAxios/useSecureAxios";
 import Swal from "sweetalert2";
 import makeAnimated from 'react-select/animated';
+import imageCompression from "browser-image-compression";
 
 const daysOptions = [
     { value: "Sunday", label: "Sunday" },
@@ -39,19 +40,30 @@ const BeATrainer = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [photo, setPhoto] = useState('');
     const animatedComponents = makeAnimated();
+    const availableDaysref = useRef();
 
     // upload photo in imgbb on change
     const handlePhotoChange = async (e) => {
         try {
             setPhotoLoading(true)
             const file = e.target.files[0];
-            const formData = new FormData();
-            formData.append("image", file);
-            console.log(Object.fromEntries(formData));
-            await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData)
-                .then((data) => {
-                    setPhoto(data.data.data)
-                });
+
+            if (file) {
+                const options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 600,
+                    useWebWorker: true,
+                }
+                const compressedFile = await imageCompression(file, options);
+
+                const formData = new FormData();
+                formData.append("image", compressedFile);
+                console.log(Object.fromEntries(formData));
+                await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData)
+                    .then((data) => {
+                        setPhoto(data.data.data)
+                    });
+            }
         } finally {
             setPhotoLoading(false);
         }
@@ -78,13 +90,20 @@ const BeATrainer = () => {
             };
 
             const res = await secureAxios.post('/trainers', finalData);
-            if (res.data.insertedId) {
+            if (res.data.success) {
                 Swal.fire({
-                    title: "Applied Successfully",
+                    title: res.data.message,
                     icon: "success",
                     draggable: false
                 });
-                reset()
+                reset();
+                availableDaysref.current.clearValue()
+            } else {
+                Swal.fire({
+                    title: res.data.message,
+                    icon: "error",
+                    draggable: false
+                });
             }
         } catch (error) {
             Swal.fire({
@@ -214,6 +233,7 @@ const BeATrainer = () => {
                                 isMulti
                                 className="text-black"
                                 placeholder="Select days..."
+                                ref={availableDaysref}
                             />
                         )}
                     />
@@ -242,7 +262,7 @@ const BeATrainer = () => {
                             />
                         )}
                     />
-                    {errors.availableTime && (
+                    {errors.availableTimes && (
                         <p className="text-red-500 text-sm mt-1">Select at least one time</p>
                     )}
                 </div>
