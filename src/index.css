@@ -17,6 +17,7 @@
     --silver: #BCC6CC;
     --thin-yellow: #FEFCE8;
     --root-bg: #F8F9FA;
+    --gray700: #4a5568;
 }
 
 @theme {
@@ -30,6 +31,7 @@
     --color-silver: var(--silver);
     --color-thin-yellow: var(--thin-yellow);
     --color-root-bg: var(--root-bg);
+    --color-gray700: var(--gray700)
 }
 
 

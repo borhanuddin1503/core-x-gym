@@ -7,6 +7,8 @@ import AllClasses from "../../pages/all classes/AllClasses";
 import PrivateRoute from "../private-routes/PrivateRoute";
 import BeATrainer from "../../pages/be a trainer/BeATrainer";
 import Trainers from "../../pages/trainers/Trainers";
+import TrainerDetails from "../../pages/trainers/TrainerDetails";
+import TrainerBooking from "../../pages/Trainer booking/TrainerBooking";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,19 @@ export const router = createBrowserRouter([
       {
         path:'trainers',
         Component: Trainers
+      },
+      {
+        path:'trainer/:id',
+        Component: TrainerDetails,
+      }
+      ,
+      {
+        path:'book/:id',
+        Component: TrainerBooking,
+      },
+      {
+        path:'payment/:trainerId`',
+        Component: ,
       },
     ]
   },
