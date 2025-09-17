@@ -17,7 +17,7 @@ const TrainerCard = ({ trainer }) => {
       <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-yellow-400 shadow-md mb-4">
         <img
           src={
-            trainer.photo?.url ||
+            trainer.profileImage ||
             "https://via.placeholder.com/150?text=Trainer"
           }
           alt={trainer.fullName}
@@ -46,7 +46,7 @@ const TrainerCard = ({ trainer }) => {
       {/* CTA Button */}
       <button
         onClick={() => navigate(`/trainer/${trainer._id}`)}
-        className="mt-5 bg-yellow-400 text-white hover:bg-yellow-500 rounded-xl px-5 py-2 font-semibold transition"
+        className="mt-5 bg-yellow-400 text-white hover:bg-yellow-500 rounded-xl px-5 py-2 font-semibold transition cursor-pointer"
       >
         Know More
       </button>

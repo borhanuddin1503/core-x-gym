@@ -8,6 +8,9 @@ import { Link, useNavigate } from "react-router";
 import UseAuth from "../../../custom hooks/UseAuth";
 import useToast from "../../../custom hooks/useToast";
 import useAxiosInstency from "../../../services/Axios/AxiosInstance/AxiosInstency";
+import { HeadProvider, Meta, Title } from "react-head";
+
+
 const Register = () => {
     const [photo, setPhoto] = useState(null);
     const [photoLoading, setPhotoLoading] = useState(false);
@@ -91,7 +94,10 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center">
-
+            <HeadProvider>
+                <Title>Register | CoreX-Gym</Title>
+                <Meta name="description" content="Register of coreX-gym" />
+            </HeadProvider>
 
             <motion.div
                 initial={{ opacity: 0, y: 40 }}

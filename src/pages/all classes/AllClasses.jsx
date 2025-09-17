@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
 import useSecureAxios from "../../services/Axios/SecureAxios/useSecureAxios";
 import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../custom hooks/UseAuth";
@@ -8,6 +7,7 @@ import Loading from "../../shared/Loading/Loading";
 // icons
 import { Dumbbell } from "lucide-react";
 import ClassCard from "./ClassCard";
+import { HeadProvider, Meta, Title } from "react-head";
 
 const AllClasses = () => {
     const [page, setPage] = useState(1);
@@ -20,7 +20,7 @@ const AllClasses = () => {
         enabled: !observerLoading,
         queryFn: async () => {
             const res = await secureAxios(`/classes?page=${page}`);
-        setTotalPages(res.data.totalPages);
+            setTotalPages(res.data.totalPages);
             return res.data.classes;
         },
     });
@@ -30,9 +30,12 @@ const AllClasses = () => {
     }
 
     return (
-        <div className="sm:max-w-11/12  mx-auto px-4 py-12">
+        <div className="sm:max-w-7xl mx-auto px-4 py-12">
 
-           
+            <HeadProvider>
+                <Title>Classes | CoreX-Gym</Title>
+                <Meta name="description" content="All Classes of coreX-gym" />
+            </HeadProvider>
 
             <h2 className="text-4xl font-extrabold mb-10 text-center text-main tracking-wide">
                 <Dumbbell className="inline-block w-9 h-9 mr-2 text-[#22d3ee]" />

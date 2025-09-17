@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router";
 import UseAuth from "../../../custom hooks/UseAuth";
 import useToast from "../../../custom hooks/useToast";
 import loginImg from '../../../assets/images/login.svg'
+import { HeadProvider, Meta, Title } from "react-head";
+
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const { logIn } = UseAuth(); // 
@@ -44,7 +46,11 @@ const Login = () => {
 
     return (
         <div className="h-[calc(100vh-76px)] flex items-center justify-center">
-           
+            
+            <HeadProvider>
+                <Title>Log In | CoreX-Gym</Title>
+                <Meta name="description" content="Login Page of coreX-gym" />
+            </HeadProvider>
 
             <motion.div
                 initial={{ opacity: 0, y: 40 }}

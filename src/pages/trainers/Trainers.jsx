@@ -4,6 +4,8 @@ import TrainerCard from "./TrainerCard";
 import useAxiosInstency from "../../services/Axios/AxiosInstance/AxiosInstency";
 import Swal from "sweetalert2";
 import Loading from "../../shared/Loading/Loading";
+import { HeadProvider, Meta, Title } from "react-head";
+
 
 
 
@@ -35,6 +37,10 @@ const Trainers = () => {
 
     return (
         <div className="max-w-7xl mx-auto p-6">
+            <HeadProvider>
+                <Title>Trainers | CoreX-Gym</Title>
+                <Meta name="description" content="Trainers of coreX-gym" />
+            </HeadProvider>
             <h1 className="text-3xl font-bold mb-6 text-center">Our Trainers 👨‍🏫</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

@@ -7,6 +7,8 @@ import useSecureAxios from "../../services/Axios/SecureAxios/useSecureAxios";
 import Swal from "sweetalert2";
 import makeAnimated from 'react-select/animated';
 import imageCompression from "browser-image-compression";
+import { HeadProvider, Meta, Title } from "react-head";
+
 
 const daysOptions = [
     { value: "Sunday", label: "Sunday" },
@@ -41,6 +43,7 @@ const BeATrainer = () => {
     const [photo, setPhoto] = useState('');
     const animatedComponents = makeAnimated();
     const availableDaysref = useRef();
+    const availableTimesRef = useRef();
 
     // upload photo in imgbb on change
     const handlePhotoChange = async (e) => {
@@ -58,6 +61,7 @@ const BeATrainer = () => {
 
                 const formData = new FormData();
                 formData.append("image", compressedFile);
+                formData.append("name", file.name);
                 console.log(Object.fromEntries(formData));
                 await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData)
                     .then((data) => {
@@ -83,11 +87,15 @@ const BeATrainer = () => {
         try {
             const finalData = {
                 ...data,
+                profileImage: photo.url,
                 availableDays: data.availableDays.map((d) => d.value),
                 availableTimes: data.availableTimes.map((d) => d.value),
                 status: "pending",
                 applayAt: new Date().toISOString(),
+                
             };
+
+            console.log(finalData)
 
             const res = await secureAxios.post('/trainers', finalData);
             if (res.data.success) {
@@ -97,7 +105,9 @@ const BeATrainer = () => {
                     draggable: false
                 });
                 reset();
-                availableDaysref.current.clearValue()
+                availableDaysref.current.clearValue();
+                availableTimesRef.current.clearValue();
+                setPhoto('')
             } else {
                 Swal.fire({
                     title: res.data.message,
@@ -116,7 +126,10 @@ const BeATrainer = () => {
 
     return (
         <div className="max-w-4xl mx-auto my-12 p-8 rounded-2xl shadow-md bg-none border border-main">
-
+            <HeadProvider>
+                <Title>Be a Trainer | CoreX-Gym</Title>
+                <Meta name="description" content="Be a Trainer of coreX-gym" />
+            </HeadProvider>
 
             <h2 className="text-3xl font-bold mb-8 text-center text-main">
                 Rider Application Form
@@ -174,7 +187,7 @@ const BeATrainer = () => {
                         className="w-full block px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
                         htmlFor="profile"
                     >
-                        {photoLoading ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-warning"></span></div> : photo ? `profile: ${photo.title}` : 'Choose Photo'}
+                        {photoLoading ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-warning"></span></div> : photo ? `profile: ${photo.image.name}` : 'Choose Photo'}
                     </label>
                     <input
                         type="file"
@@ -259,6 +272,7 @@ const BeATrainer = () => {
                                 isMulti
                                 className="text-black"
                                 placeholder="Select Times..."
+                                ref={availableTimesRef}
                             />
                         )}
                     />
