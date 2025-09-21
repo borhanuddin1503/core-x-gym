@@ -33,7 +33,7 @@ const TrainerBooking = () => {
         if (!selectedPackage) {
             return setErrorMsg('Please Select a Packages');
         }
-        navigate(`/payment/trainerId=${id}` , {state:{time:selectedTime , package: selectedPackage.name}})
+        navigate(`/payment/${id}`, { state: { slot: selectedTime, packages: selectedPackage.name , price: selectedPackage.price}});
     };
 
     return (

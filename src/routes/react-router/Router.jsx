@@ -9,6 +9,9 @@ import BeATrainer from "../../pages/be a trainer/BeATrainer";
 import Trainers from "../../pages/trainers/Trainers";
 import TrainerDetails from "../../pages/trainers/TrainerDetails";
 import TrainerBooking from "../../pages/Trainer booking/TrainerBooking";
+import Payment from "../../pages/Payment/Payment";
+import DashboardLayout from "../../layouts/DashboardLayout";
+import NewsletterSubscribers from "../../pages/Dashboard/AdminDashboard/NewsletterSubscribers";
 
 export const router = createBrowserRouter([
   {
@@ -49,9 +52,19 @@ export const router = createBrowserRouter([
         Component: TrainerBooking,
       },
       {
-        path:'payment/:trainerId`',
-        Component: ,
+        path:'payment/:id',
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
       },
     ]
   },
+  {
+    path: 'dashboard',
+    element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute> ,
+    children:[
+      {
+        path:'newsLetterSubscribers',
+        Component: NewsletterSubscribers,
+      }
+    ]
+  }
 ]);

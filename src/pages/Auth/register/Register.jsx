@@ -7,7 +7,7 @@ import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import UseAuth from "../../../custom hooks/UseAuth";
 import useToast from "../../../custom hooks/useToast";
-import useAxiosInstency from "../../../services/Axios/AxiosInstance/AxiosInstency";
+import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
 import { HeadProvider, Meta, Title } from "react-head";
 
 

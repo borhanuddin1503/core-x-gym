@@ -37,9 +37,14 @@
 
 
 
-@media (max-width:1280px){
+@media (max-width:1400px){
     :root{
         font-size: 15px;
+    }
+}
+@media (max-width:1280px){
+    :root{
+        font-size: 14px;
     }
 }
 @media (max-width:1024px){

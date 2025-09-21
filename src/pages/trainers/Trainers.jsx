@@ -1,7 +1,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import TrainerCard from "./TrainerCard";
-import useAxiosInstency from "../../services/Axios/AxiosInstance/AxiosInstency";
+import useAxiosInstency from "../../services/Axios/AxiosInstance/useAxiosInstency";
 import Swal from "sweetalert2";
 import Loading from "../../shared/Loading/Loading";
 import { HeadProvider, Meta, Title } from "react-head";

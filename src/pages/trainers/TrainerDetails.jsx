@@ -3,7 +3,7 @@ import { Calendar, User, Dumbbell, Phone, Mail } from "lucide-react";
 import { Link, useNavigate, useParams } from "react-router";
 import { HeadProvider, Meta, Title } from "react-head";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosInstency from "../../services/Axios/AxiosInstance/AxiosInstency";
+import useAxiosInstency from "../../services/Axios/AxiosInstance/useAxiosInstency";
 import Loading from "../../shared/Loading/Loading";
 import Swal from "sweetalert2";
 import NotFound from "../../shared/Not Found/NotFound";
