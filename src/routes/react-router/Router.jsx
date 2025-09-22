@@ -17,6 +17,7 @@ import ManageTrainers from "../../pages/Dashboard/AdminDashboard/ManageTrainer";
 import ApplyedTrainer from "../../pages/Dashboard/AdminDashboard/ApplyedTrainer";
 import ApplicantDetails from "../../pages/Dashboard/AdminDashboard/ApplicantDetais";
 import ForbiddenAccess from "../../shared/Forbidden/Forbidden";
+import Stats from "../../pages/Dashboard/AdminDashboard/stats/Stats";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path: 'appliedTrainers/:id',
         element: <AdminProtectedRoutes><ApplicantDetails></ApplicantDetails></AdminProtectedRoutes>
+      },
+      {
+        path: 'stats',
+        element: <AdminProtectedRoutes><Stats></Stats></AdminProtectedRoutes>
       }
     ]
   }
