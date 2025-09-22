@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink, Outlet } from "react-router";
 import {
   FaHome,
@@ -19,7 +19,8 @@ import useUserRole from "../custom hooks/useUserRole";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
-console.log(role)
+  const inputRef = useRef();
+
   const navItems = [
     { to: "/dashboard", icon: FaHome, label: "Home" },
     { to: "/dashboard/myParcels", icon: FaBoxOpen, label: "My Parcels" },
@@ -36,7 +37,7 @@ console.log(role)
 
   const adminItems = [
     { to: "/dashboard/newsLetterSubscribers", icon: FaMotorcycle, label: "News Letter Subscribers" },
-    { to: "/dashboard/active-riders", icon: FaUserCheck, label: "Active Riders" },
+    { to: "/dashboard/manageTrainers", icon: FaUserCheck, label: "Manage Trainers" },
     { to: "/dashboard/pending-riders", icon: FaUserClock, label: "Pending Riders" },
     { to: "/dashboard/makeAdmin", icon: FaUserShield, label: "Make Admin" },
   ];
@@ -47,10 +48,12 @@ console.log(role)
         <NavLink
           to={item.to}
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-3 transition rounded-lg font-medium hover:bg-main/20 hover:text-main ${
-              isActive ? "bg-main/30 text-main" : "text-gray-700"
+            `flex items-center gap-3 px-4 py-3 transition rounded-lg font-medium hover:bg-main/20 hover:text-main ${isActive ? "bg-main/30 text-main" : "text-gray-700"
             }`
           }
+          onClick={() => {
+            inputRef.current.checked = false;
+          }}
         >
           <item.icon className="w-5 h-5" />
           {item.label}
@@ -60,7 +63,7 @@ console.log(role)
 
   return (
     <div className="drawer lg:drawer-open">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" ref={inputRef} />
       <div className="drawer-content flex flex-col min-h-screen bg-gray-50">
         {/* Navbar for mobile */}
         <div className="navbar bg-white shadow-md lg:hidden">

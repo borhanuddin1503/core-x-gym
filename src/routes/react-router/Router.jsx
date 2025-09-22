@@ -12,6 +12,8 @@ import TrainerBooking from "../../pages/Trainer booking/TrainerBooking";
 import Payment from "../../pages/Payment/Payment";
 import DashboardLayout from "../../layouts/DashboardLayout";
 import NewsletterSubscribers from "../../pages/Dashboard/AdminDashboard/NewsletterSubscribers";
+import AdminProtectedRoutes from "../admin protected routes/AdminProtectedRoutes";
+import ManageTrainers from "../../pages/Dashboard/AdminDashboard/ManageTrainer";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +65,11 @@ export const router = createBrowserRouter([
     children:[
       {
         path:'newsLetterSubscribers',
-        Component: NewsletterSubscribers,
+        element: <AdminProtectedRoutes><NewsletterSubscribers></NewsletterSubscribers></AdminProtectedRoutes>,
+      },
+      {
+        path: 'manageTrainers',
+        element: <AdminProtectedRoutes><ManageTrainers></ManageTrainers></AdminProtectedRoutes>
       }
     ]
   }
