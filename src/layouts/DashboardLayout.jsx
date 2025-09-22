@@ -38,7 +38,7 @@ const DashboardLayout = () => {
   const adminItems = [
     { to: "/dashboard/newsLetterSubscribers", icon: FaMotorcycle, label: "News Letter Subscribers" },
     { to: "/dashboard/manageTrainers", icon: FaUserCheck, label: "Manage Trainers" },
-    { to: "/dashboard/pending-riders", icon: FaUserClock, label: "Pending Riders" },
+    { to: "/dashboard/appliedTrainers", icon: FaUserClock, label: "Applied Trainers" },
     { to: "/dashboard/makeAdmin", icon: FaUserShield, label: "Make Admin" },
   ];
 

@@ -14,6 +14,9 @@ import DashboardLayout from "../../layouts/DashboardLayout";
 import NewsletterSubscribers from "../../pages/Dashboard/AdminDashboard/NewsletterSubscribers";
 import AdminProtectedRoutes from "../admin protected routes/AdminProtectedRoutes";
 import ManageTrainers from "../../pages/Dashboard/AdminDashboard/ManageTrainer";
+import ApplyedTrainer from "../../pages/Dashboard/AdminDashboard/ApplyedTrainer";
+import ApplicantDetails from "../../pages/Dashboard/AdminDashboard/ApplicantDetais";
+import ForbiddenAccess from "../../shared/Forbidden/Forbidden";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +60,10 @@ export const router = createBrowserRouter([
         path:'payment/:id',
         element: <PrivateRoute><Payment></Payment></PrivateRoute>,
       },
+      {
+        path: 'ForbiddenAccess',
+        Component: ForbiddenAccess
+      }
     ]
   },
   {
@@ -70,6 +77,14 @@ export const router = createBrowserRouter([
       {
         path: 'manageTrainers',
         element: <AdminProtectedRoutes><ManageTrainers></ManageTrainers></AdminProtectedRoutes>
+      },
+      {
+        path: 'appliedTrainers',
+        element: <AdminProtectedRoutes><ApplyedTrainer></ApplyedTrainer></AdminProtectedRoutes>
+      },
+      {
+        path: 'appliedTrainers/:id',
+        element: <AdminProtectedRoutes><ApplicantDetails></ApplicantDetails></AdminProtectedRoutes>
       }
     ]
   }

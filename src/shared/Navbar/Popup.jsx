@@ -35,7 +35,7 @@ const Popup = ({ user, handleLogOut }) => {
       <div
         className={`absolute right-0 top-full  w-64 bg-white shadow-2xl rounded-2xl p-5 text-gray-700 z-50
           transition-all duration-300
-          group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 mt-4
+          group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
           ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}
       >
         <div className="flex items-center gap-3 border-b pb-4 mb-4">

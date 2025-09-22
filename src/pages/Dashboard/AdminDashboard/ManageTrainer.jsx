@@ -56,7 +56,9 @@ const ManageTrainers = () => {
     };
 
     if (isLoading) return <Loading></Loading>;
-
+    if (trainers.length === 0) {
+        return <div className="flex items-center h-[calc(100vh-50px)] font-bold justify-center text-red-400">No Trainers Found</div>
+    }
     return (
         <div className="overflow-x-auto p-4">
             <h2 className="text-2xl font-bold mb-4">All Trainers</h2>

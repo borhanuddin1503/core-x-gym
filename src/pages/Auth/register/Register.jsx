@@ -73,7 +73,7 @@ const Register = () => {
                 })
                 form.reset();
                 setPhoto(null);
-                navigate('/login')
+                navigate('/' , {replace:true})
             } else {
                 setToastMsg({
                     type: 'error',
