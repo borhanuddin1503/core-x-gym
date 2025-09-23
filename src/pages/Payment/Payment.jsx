@@ -34,7 +34,7 @@ export default function Payment() {
     const booking = {
         trainerName: trainerQuery.fullName,
         trainerId: trainerQuery._id,
-        slotName: slot,
+        slot,
         packageName: packages,
         price,
     };

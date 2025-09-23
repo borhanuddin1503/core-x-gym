@@ -29,7 +29,7 @@ const TrainerDetails = () => {
     if (isLoading) return <Loading />;
 
     if (error) {
-       return <NotFound></NotFound>
+        return <NotFound></NotFound>
     }
 
     return (
@@ -108,41 +108,36 @@ const TrainerDetails = () => {
                         </div>
                     </div>
 
-                    {/* Available Slots */}
+
+                    {/* slots information */}
                     <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
                         <h3 className="text-xl font-bold text-main flex items-center gap-2">
                             <Calendar className="w-6 h-6" /> Available Slots
                         </h3>
 
-                        <div>
-                            <p className="font-medium text-gray700">Days:</p>
-                            <div className="flex flex-wrap gap-2 mt-2">
-                                {trainer.availableDays.map((day, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="px-3 py-1 text-sm bg-main/10 text-main font-medium rounded-full"
-                                    >
-                                        {day}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <p className="font-medium text-gray700">Times:</p>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-2">
-                                {trainer.availableTimes.map((time, idx) => (
-                                    <button
-                                        key={idx}
-                                        className="border border-main text-main px-4 py-2 rounded-lg font-medium hover:bg-main hover:text-white transition cursor-pointer"
-                                        onClick={() => navigate(`/book/${trainer._id}` , {state:{time: time}})}
-                                    >
-                                        {time}
-                                    </button>
-                                ))}
-                            </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {trainer.slots?.map((slot, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() =>
+                                        navigate(`/book/${trainer._id}`, { state: { slot } })
+                                    }
+                                    className="border border-main text-main px-4 py-3 rounded-lg font-medium 
+                   hover:bg-main hover:text-white transition cursor-pointer text-left"
+                                >
+                                    <p className="font-semibold">Class: {slot.className}</p>
+                                    <p>Days: {slot.availableDays?.join(", ")}</p>
+                                    <p>
+                                        Time:{" "}
+                                        {Array.isArray(slot.availableTimes)
+                                            ? slot.availableTimes.join(", ")
+                                            : slot.availableTimes}
+                                    </p>
+                                </button>
+                            ))}
                         </div>
                     </div>
+
                 </div>
             )}
         </div>

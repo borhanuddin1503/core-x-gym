@@ -40,6 +40,7 @@ const DashboardLayout = () => {
     { to: "/dashboard/manageTrainers", icon: FaUserCheck, label: "Manage Trainers" },
     { to: "/dashboard/appliedTrainers", icon: FaUserClock, label: "Applied Trainers" },
     { to: "/dashboard/stats", icon: FaUserClock, label: "Stats" },
+    { to: "/dashboard/addClass", icon: FaUserClock, label: "Add Class" },
     { to: "/dashboard/makeAdmin", icon: FaUserShield, label: "Make Admin" },
   ];
 

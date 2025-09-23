@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select, { components } from "react-select";
 import UseAuth from "../../custom hooks/UseAuth";
@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import makeAnimated from 'react-select/animated';
 import imageCompression from "browser-image-compression";
 import { HeadProvider, Meta, Title } from "react-head";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../shared/Loading/Loading";
 
 
 const daysOptions = [
@@ -20,10 +22,9 @@ const daysOptions = [
     { value: "Saturday", label: "Saturday" },
 ];
 const timeOptions = [
-    { value: "10AM - 1PM", label: "10AM - 1PM" },
-    { value: "1PM - 5PM", label: "1PM - 5PM" },
-    { value: "5PM - 8PM", label: "5PM - 8PM" },
-    { value: "8PM - 11PM", label: "8PM - 11PM" },
+    { value: "Morning", label: "Morning" },
+    { value: "After Noon", label: "After Noon" },
+    { value: "Night", label: "Night" },
 ];
 
 const skillsOptions = [
@@ -42,8 +43,22 @@ const BeATrainer = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [photo, setPhoto] = useState('');
     const animatedComponents = makeAnimated();
-    const availableDaysref = useRef();
-    const availableTimesRef = useRef();
+    const [loading , setLoading] = useState(false);
+
+    // fetch classes
+    const { data: classOptions = [], isLoading, error } = useQuery({
+        queryKey: ['classesWOT'],
+        queryFn: async () => {
+            const res = await secureAxios('/classes/withoutTrainers');
+            console.log(res.data)
+            return res.data.map(cls => ({
+                value: cls.name,
+                label: cls.name,
+            }));
+        }
+    })
+
+
 
     // upload photo in imgbb on change
     const handlePhotoChange = async (e) => {
@@ -85,17 +100,19 @@ const BeATrainer = () => {
     // handle submit
     const onSubmit = async (data) => {
         try {
+            setLoading(true)
+            const { className, availableDays, availableTimes, ...rest } = data;
             const finalData = {
-                ...data,
+                ...rest,
                 profileImage: photo.url,
-                availableDays: data.availableDays.map((d) => d.value),
-                availableTimes: data.availableTimes.map((d) => d.value),
+                slots: [{
+                    className: data.className.value,
+                    availableDays: data.availableDays.map((d) => d.value),
+                    availableTimes: data.availableTimes.value
+                }],
                 status: "pending",
                 applayAt: new Date().toISOString(),
-                
             };
-
-            console.log(finalData)
 
             const res = await secureAxios.post('/trainers', finalData);
             if (res.data.success) {
@@ -105,8 +122,6 @@ const BeATrainer = () => {
                     draggable: false
                 });
                 reset();
-                availableDaysref.current.clearValue();
-                availableTimesRef.current.clearValue();
                 setPhoto('')
             } else {
                 Swal.fire({
@@ -116,13 +131,20 @@ const BeATrainer = () => {
                 });
             }
         } catch (error) {
-            Swal.fire({
-                title: 'Failed to Apply',
-                icon: "error",
-                draggable: false
-            });
+             Swal.fire({
+                    title: error.message,
+                    icon: "error",
+                    draggable: false
+                });
+        }finally{
+            setLoading(false)
         }
-    };
+    }
+
+
+    if(loading || isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <div className="max-w-4xl mx-auto my-12 p-8 rounded-2xl shadow-md bg-none border border-main">
@@ -246,7 +268,6 @@ const BeATrainer = () => {
                                 isMulti
                                 className="text-black"
                                 placeholder="Select days..."
-                                ref={availableDaysref}
                             />
                         )}
                     />
@@ -269,10 +290,32 @@ const BeATrainer = () => {
                                 {...field}
                                 options={timeOptions}
                                 components={animatedComponents}
-                                isMulti
                                 className="text-black"
                                 placeholder="Select Times..."
-                                ref={availableTimesRef}
+                            />
+                        )}
+                    />
+                    {errors.availableTimes && (
+                        <p className="text-red-500 text-sm mt-1">Select at least one time</p>
+                    )}
+                </div>
+
+                {/* Class Name */}
+                <div>
+                    <label className="block text-main font-semibold mb-2">
+                        Select Class
+                    </label>
+                    <Controller
+                        name="className"
+                        control={control}
+                        rules={{ required: true }}
+                        render={({ field }) => (
+                            <Select
+                                {...field}
+                                options={classOptions}
+                                components={animatedComponents}
+                                className="text-black"
+                                placeholder="Select Class..."
                             />
                         )}
                     />

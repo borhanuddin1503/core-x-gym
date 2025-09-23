@@ -21,12 +21,18 @@ const AllClasses = () => {
         queryFn: async () => {
             const res = await secureAxios(`/classes?page=${page}`);
             setTotalPages(res.data.totalPages);
-            return res.data.classes;
+            return res.data;
         },
     });
 
+    console.log(classes)
+
     if (isLoading) {
         return <Loading />;
+    }
+
+    if(classes.length === 0){
+        return <div className="h-[calc(100vh-100px)] flex justify-center items-center text-red-500 font-bold">No Classes Found</div>
     }
 
     return (

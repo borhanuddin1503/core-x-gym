@@ -23,21 +23,20 @@ const Charts = () => {
     const subscribers = data?.subscribers;
     const transactions = data?.transactions;
 
-    console.log(subscribers, transactions)
 
     if (isLoading) return <Loading></Loading>;
     const chartData = [
-        { name: "Paid Members", count: subscribers.count },
-        { name: "Subscribers", count: transactions.count },
+        { name: "Paid Members", count: transactions.count },
+        { name: "Subscribers", count: subscribers.count },
     ];
 
 
     return (
-        <div className="bg-white shadow-xl rounded-2xl p-6 ">
+        <div className="bg-white shadow-xl rounded-2xl p-6  w-full">
             <div>
                 <h3 className="text-xl font-semibold mb-4 text-main text-center">Members Comparison</h3>
                 <div className="flex items-center justify-center">
-                    <ResponsiveContainer width={500} height={300}>
+                    <ResponsiveContainer width={350} height={300}>
                         <BarChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
                             <XAxis dataKey="name" />
                             <YAxis />

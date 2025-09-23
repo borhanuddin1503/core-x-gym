@@ -18,6 +18,7 @@ import ApplyedTrainer from "../../pages/Dashboard/AdminDashboard/ApplyedTrainer"
 import ApplicantDetails from "../../pages/Dashboard/AdminDashboard/ApplicantDetais";
 import ForbiddenAccess from "../../shared/Forbidden/Forbidden";
 import Stats from "../../pages/Dashboard/AdminDashboard/stats/Stats";
+import AddClass from "../../pages/Dashboard/AdminDashboard/Add Class/AddClass";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
       {
         path: 'stats',
         element: <AdminProtectedRoutes><Stats></Stats></AdminProtectedRoutes>
+      },
+      {
+        path: 'addClass',
+        element: <AdminProtectedRoutes><AddClass></AddClass></AdminProtectedRoutes>
       }
     ]
   }

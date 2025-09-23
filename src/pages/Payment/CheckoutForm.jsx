@@ -39,7 +39,7 @@ export default function PaymentForm({ booking, userQuery }) {
             }
         }
         createIntent();
-    }, [booking.price, booking.trainerId, booking.slotName]);
+    }, [booking.price, booking.trainerId, booking.slot.className]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,7 +76,7 @@ export default function PaymentForm({ booking, userQuery }) {
                     secureAxios.post("/payments", {
                         bookingId: booking.bookingId,
                         trainerName: booking.trainerName,
-                        slotName: booking.slotName,
+                        slot: booking.slot,
                         packageName: booking.packageName,
                         price: booking.price,
                         user: {
@@ -85,6 +85,7 @@ export default function PaymentForm({ booking, userQuery }) {
                             photoURL: userQuery.photoURL,
                         },
                         paymentIntent,
+                        paidAt: new Date().toISOString(),
                     }),
                 ]);
                 Swal.fire('Success' , 'Payment is Success' , "success");
@@ -113,7 +114,9 @@ export default function PaymentForm({ booking, userQuery }) {
                 <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
                     <h3 className="text-lg font-semibold mb-4 text-yellow-400">Booking Details</h3>
                     <p><span className="text-gray-400">Trainer:</span> {booking.trainerName}</p>
-                    <p><span className="text-gray-400">Slot:</span> {booking.slotName}</p>
+                    <p><span className="text-gray-400">ClassName:</span> {booking.slot.className}</p>
+                    <p><span className="text-gray-400">Time:</span> {booking.slot.availableTimes}</p>
+                    <p><span className="text-gray-400">Days:</span> {booking.slot.availableDays.join(', ')}</p>
                     <p><span className="text-gray-400">Package:</span> {booking.packageName}</p>
                     <p className="mt-4 font-extrabold text-yellow-300 text-2xl">$ {booking.price}</p>
                 </div>

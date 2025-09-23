@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useSecureAxios from "../../../services/Axios/SecureAxios/useSecureAxios";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
+import Loading from "../../../shared/Loading/Loading";
 const ApplyedTrainer = () => {
     const secureAxios = useSecureAxios();
     const [showRejectModal, setShowRejectModal] = useState(false);
@@ -14,6 +15,8 @@ const ApplyedTrainer = () => {
         },
     });
     console.log(appliedTrainers)
+
+    if(isLoading)return <Loading></Loading>
 
     if(appliedTrainers.length === 0){
                 return <div className="flex items-center h-[calc(100vh-50px)] font-bold justify-center text-red-400">No Apply Founded</div>

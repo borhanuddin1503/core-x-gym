@@ -31,11 +31,17 @@ const TrainerCard = ({ trainer }) => {
         <p className="text-gray-500 text-sm">{trainer.skills?.join(", ")}</p>
 
         {/* Available Info */}
-        <div className="mt-3 bg-thin-yellow rounded-xl p-3 w-full text-sm">
+        <div className="mt-3 bg-thin-yellow rounded-xl p-3 w-full text-sm max-h-28 overflow-y-auto">
           <p className="font-semibold text-black">Available:</p>
-          <p className="text-black">{trainer.availableDays?.join(", ")}</p>
-          <p className="text-black">{trainer.availableTimes?.join(", ")}</p>
+          {trainer.slots.map((slot, index) => (
+            <div key={index} className="mt-2 border-b border-gray-300 pb-2 last:border-b-0">
+              <p className="text-black font-medium">Class: {slot.className}</p>
+              <p className="text-black">Days: {slot.availableDays?.join(", ")}</p>
+              <p className="text-black">Time: {Array.isArray(slot.availableTimes) ? slot.availableTimes.join(", ") : slot.availableTimes}</p>
+            </div>
+          ))}
         </div>
+
 
         {/* Social Icons */}
         <div className="flex gap-4 mt-4 text-yellow-500">

@@ -71,13 +71,14 @@ const ApplicantDetails = () => {
             <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Email:</span> {applicant.email}</p>
             <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Phone:</span> {applicant.phone}</p>
             <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Age:</span> {applicant.age}</p>
-            <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Class:</span> {applicant.class}</p>
           </div>
           <div>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Experience:</span> {applicant.experience} yrs</p>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Skills:</span> {applicant.skills?.join(", ")}</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Days:</span> {applicant.availableDays?.join(", ")}</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Times:</span> {applicant.availableTimes?.join(", ")}</p>
+            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Days:</span> {applicant.slots.map((slt , i) => <span key={i}>{slt.availableDays?.join(", ")}</span>)}</p>
+            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Times:</span>{
+              applicant.slots.map((slt , i) => <span key={i}>{slt.availableTimes}</span>)
+            }</p>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Applied At:</span> {new Date(applicant.applayAt).toLocaleString()}</p>
           </div>
         </div>

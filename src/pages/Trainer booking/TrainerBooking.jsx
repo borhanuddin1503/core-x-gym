@@ -9,8 +9,7 @@ import packages from "./Packages";
 const TrainerBooking = () => {
     const { id } = useParams();
     const location = useLocation();
-    const selectedTime = location.state.time;
-    console.log(selectedTime)
+    const slot = location.state.slot;
     const secureAxios = useSecureAxios();
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [errorMsg, setErrorMsg] = useState('');
@@ -33,7 +32,7 @@ const TrainerBooking = () => {
         if (!selectedPackage) {
             return setErrorMsg('Please Select a Packages');
         }
-        navigate(`/payment/${id}`, { state: { slot: selectedTime, packages: selectedPackage.name , price: selectedPackage.price}});
+        navigate(`/payment/${id}`, { state: { slot, packages: selectedPackage.name, price: selectedPackage.price } });
     };
 
     return (
@@ -49,17 +48,17 @@ const TrainerBooking = () => {
                 />
                 <div>
                     <h2 className="text-2xl font-semibold">{trainer.fullName}</h2>
-                    <p className="text-gray700 mt-1">Selected Slot: {selectedTime}</p>
+                    <p className="text-gray700 mt-1">Selected Slot: {slot.availableTimes}</p>
                 </div>
             </div>
 
             {/* Classes */}
             <div className="bg-white p-6 rounded-2xl shadow-md space-y-4">
-                <h3 className="text-xl font-semibold text-main">Classes:</h3>
-                <ul className="list-disc list-inside">
-                    {trainer.skills.map((skill, idx) => (
-                        <li key={idx} className="text-gray700">{skill}</li>
-                    ))}
+                <h3 className="text-xl font-semibold text-main">Class:</h3>
+                <ul className="list-none list-inside">
+                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Class Name: </span>{slot.className}</li>
+                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Available Days: </span>{slot.availableDays?.join(', ')}</li>
+                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Available Time: </span>{slot.availableTimes}</li>
                 </ul>
             </div>
 

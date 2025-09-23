@@ -9,8 +9,11 @@ const ClassCard = ({ cls }) => {
       key={cls.id}
       className="bg-white shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl p-6 border border-gray-200"
     >
+
+      <img src={cls.image} alt="class image" className='w-full h-50 object-contain' />
+
       {/* Title */}
-      <h3 className="text-2xl font-bold text-main mb-3 flex items-center gap-2">
+      <h3 className="text-2xl font-bold text-main my-3 flex items-center gap-2">
         <Dumbbell className="w-5 h-5 text-[#22d3ee]" />
         {cls.name}
       </h3>
@@ -27,18 +30,20 @@ const ClassCard = ({ cls }) => {
       <div className="flex flex-wrap gap-4">
         {cls.trainers.slice(0, 5).map((trainer) => (
           <Link
-            to={`/trainers/${trainer.id}`}
+            to={`/trainer/${trainer._id}`}
             key={trainer.id}
             className="text-center group"
           >
-            <img
-              src={trainer.image || defaultAvatar}
-              alt={trainer.name}
-              className="w-16 h-16 rounded-full object-cover border-2 border-gray-300 group-hover:border-[#facc15] transition-all duration-300"
-            />
-            <p className="text-xs mt-2 text-black group-hover:text-[#facc15]">
-              {trainer.name}
-            </p>
+            <div className='flex flex-col gap-2 items-center'>
+              <img
+                src={trainer.profileImage || defaultAvatar}
+                alt={trainer.fullName}
+                className="w-16 h-16 rounded-full object-cover border-2 border-gray-300 group-hover:border-[#facc15] transition-all duration-300"
+              />
+              <p className="text-xs text-black group-hover:text-[#facc15]">
+                {trainer.fullName}
+              </p>
+            </div>
           </Link>
         ))}
       </div>
