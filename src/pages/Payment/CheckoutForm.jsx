@@ -57,9 +57,8 @@ export default function PaymentForm({ booking, userQuery }) {
                     payment_method: {
                         card,
                         billing_details: {
-                            name: userQuery.name,
+                            name: userQuery.displayName,
                             email: userQuery.email,
-                            phone: userQuery.phone,
                         },
                     },
                 }
@@ -74,7 +73,6 @@ export default function PaymentForm({ booking, userQuery }) {
             if (paymentIntent && paymentIntent.status === "succeeded") {
                 await Promise.all([
                     secureAxios.post("/payments", {
-                        bookingId: booking.bookingId,
                         trainerName: booking.trainerName,
                         slot: booking.slot,
                         packageName: booking.packageName,
@@ -87,6 +85,13 @@ export default function PaymentForm({ booking, userQuery }) {
                         paymentIntent,
                         paidAt: new Date().toISOString(),
                     }),
+
+                    secureAxios.patch(`/trainers/${booking.trainerEmail}/slots/book` , {
+                        className : booking.slot.className,
+                        userName: userQuery.displayName, 
+                        userEmail: userQuery.email,
+                        packageName:  booking.packageName,
+                    })
                 ]);
                 Swal.fire('Success' , 'Payment is Success' , "success");
                 setSucceeded(true);

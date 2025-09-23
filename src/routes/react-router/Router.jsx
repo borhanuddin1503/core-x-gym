@@ -19,6 +19,9 @@ import ApplicantDetails from "../../pages/Dashboard/AdminDashboard/ApplicantDeta
 import ForbiddenAccess from "../../shared/Forbidden/Forbidden";
 import Stats from "../../pages/Dashboard/AdminDashboard/stats/Stats";
 import AddClass from "../../pages/Dashboard/AdminDashboard/Add Class/AddClass";
+import TrainerProtectedRoute from "../admin protected routes/TrainerProtectedRoute";
+import TrainerSlots from "../../pages/Dashboard/TrainerDashboard/Slots";
+import AddSlot from "../../pages/Dashboard/TrainerDashboard/AddSlot";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +98,14 @@ export const router = createBrowserRouter([
       {
         path: 'addClass',
         element: <AdminProtectedRoutes><AddClass></AddClass></AdminProtectedRoutes>
+      },
+      {
+        path: 'slots',
+        element: <TrainerProtectedRoute><TrainerSlots></TrainerSlots></TrainerProtectedRoute>
+      },
+      {
+        path:'addSlots',
+        element:<TrainerProtectedRoute><AddSlot></AddSlot></TrainerProtectedRoute>
       }
     ]
   }

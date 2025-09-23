@@ -33,6 +33,7 @@ export default function Payment() {
 
     const booking = {
         trainerName: trainerQuery.fullName,
+        trainerEmail: trainerQuery.email,
         trainerId: trainerQuery._id,
         slot,
         packageName: packages,

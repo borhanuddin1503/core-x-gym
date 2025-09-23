@@ -29,9 +29,9 @@ const DashboardLayout = () => {
     { to: "/dashboard/profile", icon: FaUserEdit, label: "Update Profile" },
   ];
 
-  const riderItems = [
-    { to: "/dashboard/pending-deliveries", icon: FaTasks, label: "Pending Deliveries" },
-    { to: "/dashboard/completed-deliveries", icon: FaCheckCircle, label: "Completed Deliveries" },
+  const trainerItems = [
+    { to: "/dashboard/slots", icon: FaTasks, label: "Slots" },
+    { to: "/dashboard/addSlots", icon: FaCheckCircle, label: "Add Slot" },
     { to: "/dashboard/my-earnings", icon: FaWallet, label: "My Earnings" },
   ];
 
@@ -98,10 +98,10 @@ const DashboardLayout = () => {
             <Logo></Logo>
             <ul className="menu mt-6 space-y-1">{renderNavItems(navItems)}</ul>
 
-            {!roleLoading && role === "rider" && (
+            {!roleLoading && role === "trainer" && (
               <>
                 <h3 className="text-gray-400 text-sm uppercase mt-6 mb-2 px-4">Rider Options</h3>
-                <ul className="menu space-y-1">{renderNavItems(riderItems)}</ul>
+                <ul className="menu space-y-1">{renderNavItems(trainerItems)}</ul>
               </>
             )}
 
