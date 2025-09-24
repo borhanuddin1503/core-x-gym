@@ -22,6 +22,9 @@ import AddClass from "../../pages/Dashboard/AdminDashboard/Add Class/AddClass";
 import TrainerProtectedRoute from "../admin protected routes/TrainerProtectedRoute";
 import TrainerSlots from "../../pages/Dashboard/TrainerDashboard/Slots";
 import AddSlot from "../../pages/Dashboard/TrainerDashboard/AddSlot";
+import ActivityLog from "../../pages/Dashboard/MemberDashbaord/Activity";
+import ProfileUpdate from "../../pages/Dashboard/MemberDashbaord/ProfileUpdate";
+import BookedTrainer from "../../pages/Dashboard/MemberDashbaord/BookedTrainer";
 
 export const router = createBrowserRouter([
   {
@@ -75,6 +78,18 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute> ,
     children:[
+      {
+        index: true,
+        Component: ActivityLog
+      },
+      {
+        path: 'profile',
+        Component: ProfileUpdate,
+      },
+      {
+        path: 'bookedTrainers',
+        Component: BookedTrainer,
+      },
       {
         path:'newsLetterSubscribers',
         element: <AdminProtectedRoutes><NewsletterSubscribers></NewsletterSubscribers></AdminProtectedRoutes>,

@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useSecureAxios from "../../../services/Axios/SecureAxios/useSecureAxios";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import Loading from "../../../shared/Loading/Loading";
+import UseAuth from "../../../custom hooks/UseAuth";
+import Swal from "sweetalert2";
 const ApplyedTrainer = () => {
     const secureAxios = useSecureAxios();
     const [showRejectModal, setShowRejectModal] = useState(false);
+    const { observerLoading, user } = UseAuth();
+
 
     const { data: appliedTrainers = [], isLoading } = useQuery({
-        queryKey: ["appliedTrainers"],
+        queryKey: ['pendingTrainers', user],
         queryFn: async () => {
-            const res = await secureAxios("/trainers/pending");
+            const res = await secureAxios.get('/applied/trainers/pending', {
+                headers: { 'Cache-Control': 'no-cache' }
+            });
             return res.data;
-        },
+        }
     });
+
+
+
+
     console.log(appliedTrainers)
 
-    if(isLoading)return <Loading></Loading>
+    if (isLoading) return <Loading></Loading>
 
-    if(appliedTrainers.length === 0){
-                return <div className="flex items-center h-[calc(100vh-50px)] font-bold justify-center text-red-400">No Apply Founded</div>
+    if (appliedTrainers.length === 0) {
+        return <div className="flex items-center h-[calc(100vh-50px)] font-bold justify-center text-red-400">No Apply Founded</div>
     }
 
     return (
@@ -36,7 +46,7 @@ const ApplyedTrainer = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {appliedTrainers.map((applicant, index) => (
+                    {appliedTrainers?.map((applicant, index) => (
                         <tr key={applicant._id}>
                             <td>{index + 1}</td>
                             <td>{applicant.fullName}</td>

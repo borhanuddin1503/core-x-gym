@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import Logo from "../shared/Logo";
 import useUserRole from "../custom hooks/useUserRole";
+import { HeadProvider, Meta, Title } from "react-head";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
@@ -23,10 +24,8 @@ const DashboardLayout = () => {
 
   const navItems = [
     { to: "/dashboard", icon: FaHome, label: "Home" },
-    { to: "/dashboard/myParcels", icon: FaBoxOpen, label: "My Parcels" },
-    { to: "/dashboard/paymentHistory", icon: FaMoneyCheckAlt, label: "Payment History" },
-    { to: "/dashboard/track", icon: FaSearchLocation, label: "Track a Package" },
     { to: "/dashboard/profile", icon: FaUserEdit, label: "Update Profile" },
+    { to: "/dashboard/bookedTrainers", icon: FaUserEdit, label: "Booked Trainers" },
   ];
 
   const trainerItems = [
@@ -65,6 +64,11 @@ const DashboardLayout = () => {
 
   return (
     <div className="drawer lg:drawer-open">
+      <HeadProvider>
+        <Title>Dashboard | CoreX-Gym</Title>
+        <Meta name="description" content="Dashboard of coreX-gym" />
+      </HeadProvider>
+
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" ref={inputRef} />
       <div className="drawer-content flex flex-col min-h-screen bg-gray-50">
         {/* Navbar for mobile */}

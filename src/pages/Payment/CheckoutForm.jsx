@@ -9,6 +9,7 @@ import {
 import useAxiosInstency from "../../services/Axios/AxiosInstance/useAxiosInstency";
 import Swal from "sweetalert2";
 import useSecureAxios from "../../services/Axios/SecureAxios/useSecureAxios";
+import { HeadProvider, Meta, Title } from "react-head";
 
 
 export default function PaymentForm({ booking, userQuery }) {
@@ -86,14 +87,14 @@ export default function PaymentForm({ booking, userQuery }) {
                         paidAt: new Date().toISOString(),
                     }),
 
-                    secureAxios.patch(`/trainers/${booking.trainerEmail}/slots/book` , {
-                        className : booking.slot.className,
-                        userName: userQuery.displayName, 
+                    secureAxios.patch(`/trainers/${booking.trainerEmail}/slots/book`, {
+                        className: booking.slot.className,
+                        userName: userQuery.displayName,
                         userEmail: userQuery.email,
-                        packageName:  booking.packageName,
+                        packageName: booking.packageName,
                     })
                 ]);
-                Swal.fire('Success' , 'Payment is Success' , "success");
+                Swal.fire('Success', 'Payment is Success', "success");
                 setSucceeded(true);
             } else {
                 setError("Payment not completed");
@@ -110,6 +111,11 @@ export default function PaymentForm({ booking, userQuery }) {
             onSubmit={handleSubmit}
             className="max-w-3xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-black p-8 rounded-2xl shadow-xl text-white"
         >
+            <HeadProvider>
+                <Title>Payment | CoreX-Gym</Title>
+                <Meta name="description" content="Payment page of Core X Gym" />
+            </HeadProvider>
+
             <h2 className="text-3xl font-bold mb-8 text-center text-yellow-400 uppercase tracking-wide">
                 Complete Your Payment
             </h2>

@@ -1,16 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useSecureAxios from "../../../../services/Axios/SecureAxios/useSecureAxios";
+import Loading from "../../../../shared/Loading/Loading";
 
 const LastTransection = () => {
     const secureAxios = useSecureAxios();
-    const { data: transactions = [] } = useQuery({
+    const { data: transactions = [] ,isLoading } = useQuery({
         queryKey: ["lastTransactions"],
         queryFn: async () => {
             const res = await secureAxios.get("/admin/last-transactions");
             return res.data;
         },
     });
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <div className="mb-6 shadow-xl rounded-2xl bg-white p-6 my-6">

@@ -26,8 +26,8 @@ const Charts = () => {
 
     if (isLoading) return <Loading></Loading>;
     const chartData = [
-        { name: "Paid Members", count: transactions.count },
-        { name: "Subscribers", count: subscribers.count },
+        { name: "Paid Members", count: transactions?.count },
+        { name: "Subscribers", count: subscribers?.count },
     ];
 
 

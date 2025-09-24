@@ -18,10 +18,12 @@ const ApplicantDetails = () => {
   const { data: applicant = {}, isLoading } = useQuery({
     queryKey: ["appliedTrainer", id],
     queryFn: async () => {
-      const res = await axiosSecure(`/trainers/pending?trainerId=${id}`);
+      const res = await axiosSecure(`/applied/trainers/pending/${id}`);
       return res.data;
     },
   });
+
+  console.log(applicant)
 
   // Confirm mutation
   const confirmMutation = useMutation({
@@ -75,7 +77,7 @@ const ApplicantDetails = () => {
           <div>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Experience:</span> {applicant.experience} yrs</p>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Skills:</span> {applicant.skills?.join(", ")}</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Days:</span> {applicant.slots.map((slt , i) => <span key={i}>{slt.availableDays?.join(", ")}</span>)}</p>
+            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Days:</span> {applicant?.slots?.map((slt , i) => <span key={i}>{slt.availableDays?.join(", ")}</span>)}</p>
             <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Times:</span>{
               applicant.slots.map((slt , i) => <span key={i}>{slt.availableTimes}</span>)
             }</p>

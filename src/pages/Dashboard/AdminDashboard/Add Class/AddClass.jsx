@@ -13,6 +13,7 @@ const AddClassForm = () => {
     const { register, handleSubmit, control, reset, formState: { errors } } = useForm();
     const [photoURL, setPhotoURL] = useState('');
     const [photoLoading, setPhotoLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     console.log(photoURL)
 
@@ -80,21 +81,30 @@ const AddClassForm = () => {
         mutationFn: async (classInfo) => {
             const res = await axiosSecure.post('/classes', classInfo);
         },
-        onSuccess: () => { Swal.fire('Success', 'Class Added Successfully', "success") },
+        onSuccess: () => { 
+            Swal.fire('Success', 'Class Added Successfully', "success") 
+        },
         onError: () => { Swal.fire('Error', 'Something went wrong', 'error') }
     })
 
 
     // handle submit
     const onSubmit = async (data) => {
-        const finalData = {
-            ...data,
-        category: data.category.value,
-            image: photoURL.url
+        try {
+            setLoading(true)
+            const finalData = {
+                ...data,
+                category: data.category.value,
+                image: photoURL.url
+            }
+            classMutation.mutate(finalData);
+            reset()
+        }finally{
+            setLoading(false)
         }
-        classMutation.mutate(finalData)
     }
-    if (isLoading) return <Loading></Loading>;
+
+    if (isLoading || loading) return <Loading></Loading>;
 
     return (
         <div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
