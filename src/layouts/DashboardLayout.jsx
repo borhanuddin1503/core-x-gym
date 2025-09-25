@@ -24,6 +24,7 @@ const DashboardLayout = () => {
 
   const navItems = [
     { to: "/dashboard", icon: FaHome, label: "Home" },
+    { to: "/dashboard/activityLog", icon: FaHome, label: "Activity Log" },
     { to: "/dashboard/profile", icon: FaUserEdit, label: "Update Profile" },
     { to: "/dashboard/bookedTrainers", icon: FaUserEdit, label: "Booked Trainers" },
   ];

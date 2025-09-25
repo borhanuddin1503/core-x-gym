@@ -25,6 +25,7 @@ import AddSlot from "../../pages/Dashboard/TrainerDashboard/AddSlot";
 import ActivityLog from "../../pages/Dashboard/MemberDashbaord/Activity";
 import ProfileUpdate from "../../pages/Dashboard/MemberDashbaord/ProfileUpdate";
 import BookedTrainer from "../../pages/Dashboard/MemberDashbaord/BookedTrainer";
+import DashHome from "../../pages/Dashboard/MemberDashbaord/dashHome";
 
 export const router = createBrowserRouter([
   {
@@ -80,7 +81,11 @@ export const router = createBrowserRouter([
     children:[
       {
         index: true,
-        Component: ActivityLog
+        Component: DashHome,
+      },
+      {
+        path: 'activityLog',
+        Component: ActivityLog  
       },
       {
         path: 'profile',

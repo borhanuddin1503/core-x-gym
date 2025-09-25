@@ -62,7 +62,7 @@ const AllClasses = () => {
 
             {/* Search Box */}
             <form onSubmit={handleSearch} className="mb-6">
-                <div className="max-w-100 flex border border-main rounded-[10px] items-center py-2 px-4 gap-4">
+                <div className="md:max-w-100 flex border border-main rounded-[10px] items-center py-2 px-4 gap-4">
                     <input
                         type="text"
                         id="search"
@@ -76,7 +76,7 @@ const AllClasses = () => {
             </form>
 
             {/* Classes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
                 {classes.map((cls) => (
                     <ClassCard key={cls._id} cls={cls}></ClassCard>
                 ))}

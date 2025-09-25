@@ -3,6 +3,7 @@ import Banner from './Banner/Banner';
 import FeaturedSection from './featuredSection/FeaturedSection';
 import AboutSection from './about us/AboutSection';
 import { HeadProvider, Meta, Title } from 'react-head';
+import FeaturedClasses from './featuredClasses/FeaturedClasses';
 const Home = () => {
     return (
         <div>
@@ -14,9 +15,8 @@ const Home = () => {
             <Banner></Banner>
             <FeaturedSection></FeaturedSection>
             <AboutSection></AboutSection>
-
+            <FeaturedClasses></FeaturedClasses>
             {/* todo
-            1. featred class
             2.reviews
             3.
             */}

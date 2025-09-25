@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select, { components } from "react-select";
 import UseAuth from "../../custom hooks/UseAuth";
@@ -43,17 +43,17 @@ const BeATrainer = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [photo, setPhoto] = useState('');
     const animatedComponents = makeAnimated();
-    const [loading , setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     // fetch classes
     const { data: classOptions = [], isLoading, error } = useQuery({
         queryKey: ['classesWOT'],
         queryFn: async () => {
             const res = await secureAxios('/classes/withoutTrainers');
-            console.log(res.data)
             return res.data.map(cls => ({
                 value: cls.name,
                 label: cls.name,
+                classId: cls._id,
             }));
         }
     })
@@ -77,7 +77,6 @@ const BeATrainer = () => {
                 const formData = new FormData();
                 formData.append("image", compressedFile);
                 formData.append("name", file.name);
-                console.log(Object.fromEntries(formData));
                 await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData)
                     .then((data) => {
                         setPhoto(data.data.data)
@@ -102,11 +101,13 @@ const BeATrainer = () => {
         try {
             setLoading(true)
             const { className, availableDays, availableTimes, ...rest } = data;
+            console.log(className)
             const finalData = {
                 ...rest,
                 profileImage: photo.url,
                 slots: [{
                     className: data.className.value,
+                    classId: data.className.classId,
                     availableDays: data.availableDays.map((d) => d.value),
                     availableTimes: data.availableTimes.value
                 }],
@@ -131,18 +132,18 @@ const BeATrainer = () => {
                 });
             }
         } catch (error) {
-             Swal.fire({
-                    title: error.message,
-                    icon: "error",
-                    draggable: false
-                });
-        }finally{
+            Swal.fire({
+                title: error.message,
+                icon: "error",
+                draggable: false
+            });
+        } finally {
             setLoading(false)
         }
     }
 
 
-    if(loading || isLoading){
+    if (loading || isLoading) {
         return <Loading></Loading>
     }
 
@@ -313,9 +314,7 @@ const BeATrainer = () => {
                             <Select
                                 {...field}
                                 options={classOptions}
-                                components={animatedComponents}
-                                className="text-black"
-                                placeholder="Select Class..."
+                                placeholder="Select class..."
                             />
                         )}
                     />

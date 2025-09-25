@@ -92,6 +92,14 @@ export default function PaymentForm({ booking, userQuery }) {
                         userName: userQuery.displayName,
                         userEmail: userQuery.email,
                         packageName: booking.packageName,
+                    }),
+
+                    secureAxios.patch(`/classes/bookingCount/${booking.slot.classId}` , {
+                        userName: userQuery.displayName,
+                        userEmail: userQuery.email,
+                        trainerEmail: booking.trainerName,
+                        packageName: booking.packageName,
+                        bookedAt: new Date().toISOString(),
                     })
                 ]);
                 Swal.fire('Success', 'Payment is Success', "success");

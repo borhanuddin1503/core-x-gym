@@ -38,6 +38,7 @@ const AddSlot = () => {
             return res.data.map(cls => ({
                 value: cls.name,
                 label: cls.name,
+                classId: cls._id,
             }));
         }
     })
@@ -45,9 +46,12 @@ const AddSlot = () => {
     const onSubmit = async (data) => {
         const newSlot = {
             className: data.className.value,
+            classId: data.className.classId,
             availableDays: data.availableDays.map((d) => d.value),
             availableTimes: data.availableTimes.value,
         };
+
+        console.log(newSlot)
 
         try {
             const res = await secureAxios.patch(`/trainers/${user.email}/slots/add`, newSlot);
