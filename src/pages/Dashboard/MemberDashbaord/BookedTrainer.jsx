@@ -146,7 +146,7 @@ const BookedTrainer = () => {
                             <Rating
                                 emptySymbol={<FaRegStar className="text-yellow-400 text-2xl" />}
                                 fullSymbol={<FaStar className="text-yellow-400 text-2xl" />}
-                                fractions={2}
+                                fractions={1}
                                 initialRating={rating}
                                 onChange={(rate) => setRating(rate)}
                             />

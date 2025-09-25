@@ -5,39 +5,51 @@ import UseAuth from "../../custom hooks/UseAuth";
 import Loading from "../../shared/Loading/Loading";
 
 // icons
-import { Dumbbell } from "lucide-react";
+import { Dumbbell, SearchCheck } from "lucide-react";
 import ClassCard from "./ClassCard";
 import { HeadProvider, Meta, Title } from "react-head";
 
 const AllClasses = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [search, setSearch] = useState(""); // <-- search state
     const secureAxios = useSecureAxios();
     const { observerLoading } = UseAuth();
 
-    const { isLoading, data: classes = [] } = useQuery({
-        queryKey: ["classes", page],
+    // React Query দিয়ে data fetch
+    const { data: classes = [], isLoading } = useQuery({
+        queryKey: ["classes", page, search], // search depend korbe
         enabled: !observerLoading,
         queryFn: async () => {
-            const res = await secureAxios(`/classes?page=${page}`);
-            setTotalPages(res.data.totalPages);
-            return res.data;
+            const res = await secureAxios.get(`/classes?page=${page}&search=${search}`);
+            setTotalPages(res.data.totalPages || 1);
+            return res.data.classes; // API কী রিটার্ন করছে সেইমতে
         },
     });
 
-    console.log(classes)
+    // handle search
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const searchValue = form.search.value.trim();
+        setSearch(searchValue);
+        setPage(1); 
+    };
 
     if (isLoading) {
         return <Loading />;
     }
 
-    if(classes.length === 0){
-        return <div className="h-[calc(100vh-100px)] flex justify-center items-center text-red-500 font-bold">No Classes Found</div>
+    if (!classes || classes.length === 0) {
+        return (
+            <div className="h-[calc(100vh-100px)] flex justify-center items-center text-red-500 font-bold">
+                No Classes Found
+            </div>
+        );
     }
 
     return (
         <div className="sm:max-w-7xl mx-auto px-4 py-12">
-
             <HeadProvider>
                 <Title>Classes | CoreX-Gym</Title>
                 <Meta name="description" content="All Classes of coreX-gym" />
@@ -48,9 +60,26 @@ const AllClasses = () => {
                 All Classes
             </h2>
 
+            {/* Search Box */}
+            <form onSubmit={handleSearch} className="mb-6">
+                <div className="max-w-100 flex border border-main rounded-[10px] items-center py-2 px-4 gap-4">
+                    <input
+                        type="text"
+                        id="search"
+                        className="border-none outline-none w-full"
+                        placeholder="Search for a Class"
+                    />
+                    <button type="submit">
+                        <SearchCheck className="text-main" />
+                    </button>
+                </div>
+            </form>
+
             {/* Classes Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {classes.map((cls, i) => <ClassCard key={i} cls={cls}></ClassCard>)}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+                {classes.map((cls) => (
+                    <ClassCard key={cls._id} cls={cls}></ClassCard>
+                ))}
             </div>
 
             {/* Pagination */}
@@ -67,10 +96,11 @@ const AllClasses = () => {
                     <button
                         key={i + 1}
                         onClick={() => setPage(i + 1)}
-                        className={`px-4 py-2 rounded-lg font-medium transition-all border cursor-pointer ${page === i + 1
-                            ? "bg-main text-black border-main shadow-lg"
-                            : "bg-[#0f172a] text-gray-300 border-gray-600 hover:bg-[#1e293b] hover:text-main"
-                            }`}
+                        className={`px-4 py-2 rounded-lg font-medium transition-all border cursor-pointer ${
+                            page === i + 1
+                                ? "bg-main text-black border-main shadow-lg"
+                                : "bg-[#0f172a] text-gray-300 border-gray-600 hover:bg-[#1e293b] hover:text-main"
+                        }`}
                     >
                         {i + 1}
                     </button>

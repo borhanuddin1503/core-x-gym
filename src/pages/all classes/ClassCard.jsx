@@ -31,7 +31,7 @@ const ClassCard = ({ cls }) => {
         {cls.trainers.slice(0, 5).map((trainer) => (
           <Link
             to={`/trainer/${trainer._id}`}
-            key={trainer.id}
+            key={trainer._id}
             className="text-center group"
           >
             <div className='flex flex-col gap-2 items-center'>
