@@ -63,7 +63,7 @@ const BookedTrainer = () => {
 
     if (!bookings || bookings.length === 0)
         return (
-            <div className="text-center mt-10 text-red-400">
+            <div className="text-center mt-10 text-red-400 min-h-[calc(100vh-100px)] flex items-center justify-center font-bold">
                 No Booked Trainer Found
             </div>
         );
