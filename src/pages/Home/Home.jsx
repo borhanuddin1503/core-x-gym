@@ -5,6 +5,8 @@ import AboutSection from './about us/AboutSection';
 import { HeadProvider, Meta, Title } from 'react-head';
 import FeaturedClasses from './featuredClasses/FeaturedClasses';
 import Reviews from './Reviews/Reviews';
+import Newsletter from './Newsletter/NewsLetter';
+import Team from './Team/Team';
 const Home = () => {
     return (
         <div>
@@ -18,6 +20,8 @@ const Home = () => {
             <AboutSection></AboutSection>
             <FeaturedClasses></FeaturedClasses>
             <Reviews></Reviews>
+            <Newsletter></Newsletter>
+            <Team></Team>
             {/* todo
             2.reviews
             3.
