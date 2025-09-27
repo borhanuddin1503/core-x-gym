@@ -7,6 +7,7 @@ import FeaturedClasses from './featuredClasses/FeaturedClasses';
 import Reviews from './Reviews/Reviews';
 import Newsletter from './Newsletter/NewsLetter';
 import Team from './Team/Team';
+import LatestPosts from './LeatestCommunity/LeatestCommunity';
 const Home = () => {
     return (
         <div>
@@ -22,10 +23,7 @@ const Home = () => {
             <Reviews></Reviews>
             <Newsletter></Newsletter>
             <Team></Team>
-            {/* todo
-            2.reviews
-            3.
-            */}
+            <LatestPosts></LatestPosts>
         </div>
     );
 };

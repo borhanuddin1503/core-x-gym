@@ -233,7 +233,7 @@ const BeATrainer = () => {
                         {skillsOptions.map((skill) => (
                             <label
                                 key={skill}
-                                className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg cursor-pointer hover:bg-gray-200 transition"
+                                className="flex items-center gap-2 bg-white p-2 rounded-lg cursor-pointer  transition"
                             >
                                 <input
                                     type="checkbox"
@@ -267,7 +267,7 @@ const BeATrainer = () => {
                                 components={animatedComponents}
                                 options={daysOptions}
                                 isMulti
-                                className="text-black"
+                                className=""
                                 placeholder="Select days..."
                             />
                         )}
@@ -291,7 +291,6 @@ const BeATrainer = () => {
                                 {...field}
                                 options={timeOptions}
                                 components={animatedComponents}
-                                className="text-black"
                                 placeholder="Select Times..."
                             />
                         )}

@@ -62,24 +62,24 @@ const ManageTrainers = () => {
     return (
         <div className="overflow-x-auto p-4">
             <h2 className="text-2xl font-bold mb-4">All Trainers</h2>
-            <table className="table w-full">
-                <thead className="bg-gray-200">
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Experience</th>
-                        <th>Action</th>
+            <table className="table w-full text-black border-collapse">
+                <thead className="text-black">
+                    <tr >
+                        <th className="border">#</th>
+                        <th className="border">Name</th>
+                        <th className="border">Email</th>
+                        <th className="border">Experience</th>
+                        <th className="border">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {trainers.map((trainer, index) => (
                         <tr key={trainer._id}>
-                            <td>{index + 1}</td>
-                            <td>{trainer.fullName}</td>
-                            <td>{trainer.email}</td>
-                            <td>{trainer.experience} yrs</td>
-                            <td>
+                            <td className="border">{index + 1}</td>
+                            <td className="border">{trainer.fullName}</td>
+                            <td className="border">{trainer.email}</td>
+                            <td className="border">{trainer.experience} yrs</td>
+                            <td className="border">
                                 <button
                                     onClick={() => handleDelete(trainer)}
                                     className="btn btn-sm btn-error text-white"

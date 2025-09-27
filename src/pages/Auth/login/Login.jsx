@@ -6,13 +6,16 @@ import UseAuth from "../../../custom hooks/UseAuth";
 import useToast from "../../../custom hooks/useToast";
 import loginImg from '../../../assets/images/login.svg'
 import { HeadProvider, Meta, Title } from "react-head";
+import { FcGoogle } from "react-icons/fc"
+import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
-    const { logIn } = UseAuth(); // 
+    const { logIn, loginUsingGoogle } = UseAuth(); // 
     const navigate = useNavigate();
     const { setToastMsg } = useToast();
     const [error, setError] = useState("");
+    const axiosInstancy = useAxiosInstency()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +28,7 @@ const Login = () => {
             // Step 1: Firebase/Auth login
             await logIn(email, password);
 
-            // Step 2: Toast দেখাও
+            // Step 2: Toast
             setToastMsg({
                 type: "success",
                 message: "Login successful 🎉",
@@ -44,9 +47,47 @@ const Login = () => {
         }
     };
 
+
+    const handleLoginWithGoogle = async () => {
+        setLoading(true);
+        setError("");
+
+        try {
+           
+            const userCredential = await loginUsingGoogle();
+            const { email, displayName, photoURL } = userCredential.user;
+            console.log(userCredential)
+
+           
+            await axiosInstancy.post("/users", {
+                email,
+                displayName,
+                photoURL,
+                role: "member",
+                created_at: new Date().toISOString(),
+            });
+
+           
+            setToastMsg({
+                type: "success",
+                message: "Login successful 🎉",
+            });
+            navigate("/");
+
+        } catch (err) {
+            setToastMsg({
+                type: "error",
+                message: "Login failed",
+            });
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="h-[calc(100vh-76px)] flex items-center justify-center">
-            
+
             <HeadProvider>
                 <Title>Log In | CoreX-Gym</Title>
                 <Meta name="description" content="Login Page of coreX-gym" />
@@ -123,6 +164,14 @@ const Login = () => {
                             )}
                         </motion.button>
                     </form>
+
+
+                    <p className="text-center font-bold text-[0.8rem] my-3">or</p>
+
+                    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-100 transition w-full font-bold justify-center hover:scale-105 transform cursor-pointer" onClick={handleLoginWithGoogle}>
+                        <FcGoogle className="text-2xl" size={25} />
+                        Continue with Google
+                    </button>
                 </div>
             </motion.div>
         </div>

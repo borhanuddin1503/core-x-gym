@@ -21,7 +21,7 @@ const Team = () => {
     }
 
     return (
-        <section className="py-20 px-4 md:px-16 bg-gray-50 max-w-7xl mx-auto">
+        <section className="py-20 px-4 md:px-16 bg-white max-w-7xl mx-auto">
             <div className="max-w-7xl mx-auto text-center mb-12">
                 <h2 className="text-4xl font-bold text-main mb-2">Meet Our Trainers</h2>
                 <p className="text-gray-700">

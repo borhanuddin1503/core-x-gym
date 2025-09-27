@@ -34,10 +34,10 @@ const ApplyedTrainer = () => {
 
     return (
         <div className="overflow-x-auto p-4">
-            <h2 className="text-2xl font-bold mb-4">Applied Trainers</h2>
-            <table className="table w-full">
+            <h2 className="text-2xl font-bold mb-4 text-main/80">Applied Trainers</h2>
+            <table className="table w-full text-black">
                 <thead>
-                    <tr className="bg-gray-200">
+                    <tr className="bg-gray200">
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>

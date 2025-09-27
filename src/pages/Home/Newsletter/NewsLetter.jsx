@@ -10,8 +10,12 @@ const Newsletter = () => {
   const axiosInstancy = useAxiosInstency();
 
   const onSubmit = async (data) => {
+    const finalData = {
+      ...data,
+      subscribedAt: new Date().toISOString()
+    }
     try {
-      const res = await axiosInstancy.post("/newsLetter", data);
+      const res = await axiosInstancy.post("/newsLetter", finalData);
       if (res.data.insertedId) {
         Swal.fire({
           icon: "success",
@@ -32,9 +36,9 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto my-16 p-6 md:p-10 bg-white shadow-lg rounded-2xl grid md:grid-cols-2 gap-10 items-center">
+    <div className="max-w-6xl mx-auto my-16 p-6 md:p-10 bg-white shadow-lg rounded-2xl grid md:grid-cols-2 gap-10 items-center" data-aos="zoom-in-up">
       {/* Left Side Image */}
-      <div className="relative" data-aos="fade-right">
+      <div className="relative" >
         <img
           src={newsletter} // Replace with gym-related image
           alt="Newsletter"
@@ -44,7 +48,7 @@ const Newsletter = () => {
       </div>
 
       {/* Right Side Content */}
-      <div data-aos="fade-left">
+      <div >
         <h2 className="text-3xl md:text-4xl font-bold text-main mb-4">
           Join Our Newsletter
         </h2>

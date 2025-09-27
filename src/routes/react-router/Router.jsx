@@ -26,6 +26,10 @@ import ActivityLog from "../../pages/Dashboard/MemberDashbaord/Activity";
 import ProfileUpdate from "../../pages/Dashboard/MemberDashbaord/ProfileUpdate";
 import BookedTrainer from "../../pages/Dashboard/MemberDashbaord/BookedTrainer";
 import DashHome from "../../pages/Dashboard/MemberDashbaord/dashHome";
+import TrainerAndAdmnProtectedRoute from "../admin protected routes/TrainerAndAdminProtectedRoute";
+import AddPost from "../../pages/Dashboard/AdminDashboard/AddPost";
+import CommunityPage from "../../pages/CommunityPage/CommunityPage";
+import NotFound from "../../pages/404";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +43,10 @@ export const router = createBrowserRouter([
       {
         path: 'classes',
         Component: AllClasses
+      },
+      {
+        path: 'community',
+        Component: CommunityPage
       },
       {
         path:'register',
@@ -96,6 +104,10 @@ export const router = createBrowserRouter([
         Component: BookedTrainer,
       },
       {
+        path: 'add-post',
+        element: <TrainerAndAdmnProtectedRoute><AddPost></AddPost></TrainerAndAdmnProtectedRoute>
+      },
+      {
         path:'newsLetterSubscribers',
         element: <AdminProtectedRoutes><NewsletterSubscribers></NewsletterSubscribers></AdminProtectedRoutes>,
       },
@@ -128,5 +140,9 @@ export const router = createBrowserRouter([
         element:<TrainerProtectedRoute><AddSlot></AddSlot></TrainerProtectedRoute>
       }
     ]
+  },
+  {
+    path: '*',
+    Component: NotFound
   }
 ]);

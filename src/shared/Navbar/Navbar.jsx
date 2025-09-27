@@ -1,4 +1,4 @@
- import { Link, NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import useToast from '../../custom hooks/useToast';
 import Logo from '../Logo';
 import UseAuth from '../../custom hooks/UseAuth';
@@ -10,15 +10,18 @@ const Navbar = () => {
     const { user, logOut } = UseAuth();
     const { setToastMsg } = useToast();
     const links = useNavLinks();
-    const [isOpen , setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [theme, setTheme] = useState('light')
     const handleLogOut = () => {
         logOut()
             .then(() => setToastMsg({ type: 'success', message: 'Logout Successful' }))
             .catch(() => setToastMsg({ type: 'error', message: 'Something went wrong' }))
     }
 
+    console.log(theme)
+
     return (
-        <nav className="navbar py-2 justify-between mb-1 rounded-2xl bg-black">
+        <nav className="navbar py-2 justify-between mb-1 rounded-2xl bg-gray700 sticky top-0 z-50">
             {/* Left */}
             <div className="sm:navbar-start">
                 <div className="dropdown">
@@ -30,7 +33,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow font-medium text-[3rem]">
-                        {links.map((link , i) => {
+                        {links.map((link, i) => {
                             return <li key={i}><NavLink to={link?.path}>{link?.label}</NavLink></li>
                         })}
                     </ul>
@@ -43,7 +46,7 @@ const Navbar = () => {
             {/* Center */}
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-medium text-white">
-                    {links.map((link , i) => {
+                    {links.map((link, i) => {
                         return <li key={i}><NavLink to={link?.path}>{link?.label}</NavLink></li>
                     })}
                 </ul>
@@ -51,6 +54,18 @@ const Navbar = () => {
 
             {/* Right */}
             <div className="navbar-end flex gap-4 grow relative">
+                <input type="checkbox" className="toggle bg-gray-300 checked:bg-blue-500 border-gray-400"
+                    onChange={() => {
+                        setTheme(prev => {
+                            const newTheme = prev === 'light' ? 'dark' : 'light';
+                            if (newTheme === 'dark') {
+                                document.documentElement.classList.add('dark');
+                            } else {
+                                document.documentElement.classList.remove('dark');
+                            }
+                            return newTheme;
+                        });;
+                    }} />
                 {user ? (
                     <Popup user={user} handleLogOut={handleLogOut} isOpen={isOpen} setIsOpen={setIsOpen}></Popup>
                 ) : (

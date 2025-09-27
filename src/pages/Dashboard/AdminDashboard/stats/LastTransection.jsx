@@ -22,9 +22,9 @@ const LastTransection = () => {
             <h3 className="text-xl font-semibold mb-4 text-main text-center">
                 Last 6 Transactions
             </h3>
-            <table className="w-full border">
+            <table className="w-full border text-black">
                 <thead>
-                    <tr className="bg-yellow-100">
+                    <tr className="bg-yellow-100 text-gray200">
                         <th className="p-2">Member</th>
                         <th className="p-2">Amount</th>
                         <th className="p-2">Trainer</th>

@@ -28,27 +28,26 @@ const NewsletterSubscribers = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">All Newsletter Subscribers</h2>
+            <h2 className="text-2xl font-bold mb-6 text-main/80">All Newsletter Subscribers</h2>
             <div className="overflow-x-auto">
-                <table className="min-w-full bg-white shadow rounded-lg">
-                    <thead className="bg-gray-100 border-b">
+                <table className="min-w-full bg-white shadow rounded-lg border-collapse">
+                    <thead className=" border-b">
                         <tr>
-                            <th className="py-3 px-6 text-left text-gray-600 font-medium">#</th>
-                            <th className="py-3 px-6 text-left text-gray-600 font-medium">Name</th>
-                            <th className="py-3 px-6 text-left text-gray-600 font-medium">Email</th>
-                            <th className="py-3 px-6 text-left text-gray-600 font-medium">Subscribed At</th>
+                            <th className="py-3 px-6 text-left text-gray700 font-medium border">#</th>
+                            <th className="py-3 px-6 text-left text-gray700 font-medium border">Name</th>
+                            <th className="py-3 px-6 text-left text-gray700 font-medium border">Email</th>
+                            <th className="py-3 px-6 text-left text-gray700 font-medium border">Subscribed At</th>
                         </tr>
                     </thead>
                     <tbody>
                         {subscribers.map((sub, index) => (
                             <tr
                                 key={sub._id || index}
-                                className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                             >
-                                <td className="py-3 px-6 text-gray-700">{index + 1}</td>
-                                <td className="py-3 px-6 text-gray-700">{sub.name || "-"}</td>
-                                <td className="py-3 px-6 text-gray-700">{sub.email}</td>
-                                <td className="py-3 px-6 text-gray-700">
+                                <td className="py-3 px-6 text-gray700 border">{index + 1}</td>
+                                <td className="py-3 px-6 text-gray700 border">{sub.name || "-"}</td>
+                                <td className="py-3 px-6 text-gray700 border">{sub.email}</td>
+                                <td className="py-3 px-6 text-gray700 border">
                                     {new Date(sub.subscribedAt).toLocaleString()}
                                 </td>
                             </tr>

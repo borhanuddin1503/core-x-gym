@@ -20,6 +20,19 @@
     --gray700: #4a5568;
 }
 
+.dark {
+    --main: #FDC700;
+    --stroke: #2D3748;
+    --white: #1A202C;
+    --black: #EDF2F7;
+    --cream: #1C1C1C;
+    --gray200: #718096;
+    --silver: #4A5568;
+    --thin-yellow: #FEFCE8;
+    --root-bg: #1A202C;
+    --gray700: #A0AEC0;
+}
+
 @theme {
     --font-jakarta: 'jakarta', 'sans-serif';
     --color-main: var(--main);
@@ -37,21 +50,24 @@
 
 
 
-@media (max-width:1400px){
-    :root{
+@media (max-width:1400px) {
+    :root {
         font-size: 15px;
     }
 }
-@media (max-width:1280px){
-    :root{
+
+@media (max-width:1280px) {
+    :root {
         font-size: 14px;
     }
 }
-@media (max-width:1024px){
-    :root{
+
+@media (max-width:1024px) {
+    :root {
         font-size: 13.5px;
     }
 }
+
 @media (max-width: 640px) {
     :root {
         font-size: 12px;

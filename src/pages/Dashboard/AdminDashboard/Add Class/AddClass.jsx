@@ -112,7 +112,7 @@ const AddClassForm = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
                 <div>
-                    <label className="block font-medium mb-1">Class Name</label>
+                    <label className="block font-medium mb-1 text-black">Class Name</label>
                     <input
                         type="text"
                         className="input input-bordered w-full"
@@ -147,7 +147,7 @@ const AddClassForm = () => {
 
                 {/* description */}
                 <div>
-                    <label className="block font-medium mb-1">Description</label>
+                    <label className="block font-medium mb-1 text-black">Description</label>
                     <textarea
                         className="textarea textarea-bordered w-full"
                         {...register("description", { required: true })}
@@ -157,7 +157,7 @@ const AddClassForm = () => {
 
                 {/* category */}
                 <div>
-                    <label className="block font-medium mb-1">Category</label>
+                    <label className="block font-medium mb-1 text-black">Category</label>
                     <Controller
                         name="category"
                         control={control}
@@ -165,7 +165,7 @@ const AddClassForm = () => {
                             <Select
                                 {...field}
                                 options={categoryOptions}
-                                className="w-full"
+                                className="w-full "
                             />
                         )}
                     />

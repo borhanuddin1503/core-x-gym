@@ -69,7 +69,7 @@ const BookedTrainer = () => {
         );
 
     return (
-        <div className="overflow-x-auto p-6 max-w-5xl mx-auto mt-10">
+        <div className="overflow-x-auto p-6 max-w-5xl mx-auto mt-10 text-black">
             <h2 className="text-2xl font-bold text-main mb-6">My Booked Trainers</h2>
 
             {/* Table */}

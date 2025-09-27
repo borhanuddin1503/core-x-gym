@@ -14,7 +14,7 @@ const Banner = () => {
             {/* Overlay content */}
             <div className="text-center text-white px-4 md:px-0 max-w-2xl space-y-4">
                 {/* Heading */}
-                <h2 className="text-5xl font-bold animate-fadeIn">
+                <h2 className="text-5xl font-bold animate-fadeIn text-gray200">
                     Build Your Perfect <span className="text-main">Body</span>
                 </h2>
 

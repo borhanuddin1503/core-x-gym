@@ -21,7 +21,6 @@ const ProfileUpdate = () => {
             console.log(data.photo[0])
             let photoURL = user?.photoURL;
 
-            // যদি নতুন image select করা হয়
             if (data.photo[0]) {
                 const options = {
                     maxSizeMB: 1,
@@ -67,7 +66,7 @@ const ProfileUpdate = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Name */}
                 <div>
-                    <label className="block mb-1 font-semibold">Name</label>
+                    <label className="block mb-1 font-semibold text-black">Name</label>
                     <input
                         type="text"
                         defaultValue={user?.displayName}
@@ -78,7 +77,7 @@ const ProfileUpdate = () => {
 
                 {/* Email (read-only) */}
                 <div>
-                    <label className="block mb-1 font-semibold">Email</label>
+                    <label className="block mb-1 font-semibold text-black">Email</label>
                     <input
                         type="email"
                         value={user?.email}
@@ -89,7 +88,7 @@ const ProfileUpdate = () => {
 
                 {/* Profile Picture Upload */}
                 <div>
-                    <label className="block mb-1 font-semibold">Profile Picture</label>
+                    <label className="block mb-1 font-semibold text-black" >Profile Picture</label>
                     <input
                         type="file"
                         accept="image/*"
@@ -100,7 +99,7 @@ const ProfileUpdate = () => {
 
                 {/* Last Login */}
                 <div>
-                    <label className="block mb-1 font-semibold">Last Login</label>
+                    <label className="block mb-1 font-semibold text-black">Last Login</label>
                     <input
                         type="text"
                         value={new Date(user?.metadata?.lastSignInTime).toLocaleString() || "N/A"}

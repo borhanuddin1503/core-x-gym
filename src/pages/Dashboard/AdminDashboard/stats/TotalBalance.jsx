@@ -18,7 +18,7 @@ const TotalBalance = () => {
             {/* Total Balance */}
             <div className="bg-white shadow-xl rounded-2xl border-l-4 border-yellow-400 text-center py-6">
                 <h2 className="text-2xl font-bold text-main">Total Balance</h2>
-                <p className="text-3xl font-semibold mt-2">
+                <p className="text-3xl font-semibold mt-2 text-black">
                     ${balance?.totalBalance || 0}
                 </p>
             </div>

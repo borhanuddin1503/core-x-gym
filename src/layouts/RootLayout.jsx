@@ -7,10 +7,16 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import UseAuth from '../custom hooks/UseAuth';
 import ObserverLoading from '../shared/Loading/ObserverLoading';
-AOS.init()
+import Footer from '../shared/Footer/Footer';
+
+
 const RootLayout = () => {
     const { toastMsg, setToastMsg } = useToast();
     const {observerLoading} = UseAuth();
+
+    useEffect(() => {
+        AOS.init()
+    } , [])
 
     useEffect(() => {
         if (!toastMsg || !toastMsg.type) return;
@@ -31,6 +37,7 @@ const RootLayout = () => {
             <Navbar></Navbar>
             <Outlet></Outlet>
             <ToastContainer></ToastContainer>
+            <Footer></Footer>
         </div>
     );
 };

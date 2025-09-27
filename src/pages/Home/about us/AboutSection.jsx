@@ -6,10 +6,10 @@ import { Link } from "react-router";
 
 const AboutSection = () => {
     return (
-        <section className="py-20 px-4 md:px-16 rounded-2xl">
+        <section className="py-20 px-4 md:px-16 rounded-2xl" data-aos="zoom-in-up">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Image */}
-                <div className="relative rounded-2xl overflow-hidden shadow-lg" data-aos="fade-right">
+                <div className="relative rounded-2xl overflow-hidden shadow-lg" >
                     <img
                         src={aboutImg}
                         alt="About Gym"
@@ -21,7 +21,7 @@ const AboutSection = () => {
                 </div>
 
                 {/* Text Content */}
-                <div className="space-y-6" data-aos="fade-left">
+                <div className="space-y-6" >
                     <h2 className="text-4xl font-bold text-black">
                         About <span className="text-main">Our Gym</span>
                     </h2>

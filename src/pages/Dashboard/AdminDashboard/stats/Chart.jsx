@@ -36,7 +36,7 @@ const Charts = () => {
             <div>
                 <h3 className="text-xl font-semibold mb-4 text-main text-center">Members Comparison</h3>
                 <div className="flex items-center justify-center">
-                    <ResponsiveContainer width={350} height={300}>
+                    <ResponsiveContainer maxWidth={350} height={300}>
                         <BarChart data={chartData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
                             <XAxis dataKey="name" />
                             <YAxis />

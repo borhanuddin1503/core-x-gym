@@ -66,7 +66,7 @@ const AllClasses = () => {
                     <input
                         type="text"
                         id="search"
-                        className="border-none outline-none w-full"
+                        className="border-none outline-none w-full text-black"
                         placeholder="Search for a Class"
                     />
                     <button type="submit">

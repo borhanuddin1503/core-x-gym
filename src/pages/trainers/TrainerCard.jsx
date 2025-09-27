@@ -31,7 +31,7 @@ const TrainerCard = ({ trainer }) => {
         <p className="text-gray-500 text-sm">{trainer.skills?.join(", ")}</p>
 
         {/* Available Info */}
-        <div className="mt-3 bg-thin-yellow rounded-xl p-3 w-full text-sm max-h-28 overflow-y-auto">
+        <div className="mt-3 bg-white rounded-xl p-3 w-full text-sm max-h-28 overflow-y-auto">
           <p className="font-semibold text-black">Available:</p>
           {trainer.slots.map((slot, index) => (
             <div key={index} className="mt-2 border-b border-gray-300 pb-2 last:border-b-0">

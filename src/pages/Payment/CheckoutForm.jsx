@@ -117,7 +117,7 @@ export default function PaymentForm({ booking, userQuery }) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="max-w-3xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-black p-8 rounded-2xl shadow-xl text-white"
+            className="max-w-3xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-black p-8 rounded-2xl shadow-xl text-white mb-2"
         >
             <HeadProvider>
                 <Title>Payment | CoreX-Gym</Title>
