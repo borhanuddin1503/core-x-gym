@@ -56,7 +56,7 @@ const Login = () => {
            
             const userCredential = await loginUsingGoogle();
             const { email, displayName, photoURL } = userCredential.user;
-            console.log(userCredential)
+         
 
            
             await axiosInstancy.post("/users", {

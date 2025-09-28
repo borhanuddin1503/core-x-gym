@@ -24,7 +24,7 @@ const ApplyedTrainer = () => {
 
 
 
-    console.log(appliedTrainers)
+   
 
     if (isLoading) return <Loading></Loading>
 

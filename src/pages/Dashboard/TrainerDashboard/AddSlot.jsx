@@ -34,7 +34,6 @@ const AddSlot = () => {
         queryKey: ['classesWOT'],
         queryFn: async () => {
             const res = await secureAxios('/classes/withoutTrainers');
-            console.log(res.data)
             return res.data.map(cls => ({
                 value: cls.name,
                 label: cls.name,
@@ -51,7 +50,6 @@ const AddSlot = () => {
             availableTimes: data.availableTimes.value,
         };
 
-        console.log(newSlot)
 
         try {
             const res = await secureAxios.patch(`/trainers/${user.email}/slots/add`, newSlot);

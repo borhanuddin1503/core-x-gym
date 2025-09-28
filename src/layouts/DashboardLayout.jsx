@@ -24,7 +24,6 @@ const DashboardLayout = () => {
   const trainerItems = [
     { to: "/dashboard/slots", icon: FaCalendarAlt, label: "Slots" },
     { to: "/dashboard/addSlots", icon: FaPlusCircle, label: "Add Slot" },
-    { to: "/dashboard/my-earnings", icon: FaWallet, label: "My Earnings" },
     { to: "/dashboard/add-post", icon: FaPlusCircle, label: "Add Post" },
   ];
 

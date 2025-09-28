@@ -14,7 +14,6 @@ const Team = () => {
         }
     })
 
-    console.log(trainers)
 
     if (isLoading) {
         return <Loading></Loading>

@@ -21,7 +21,6 @@ const Register = () => {
     const navigate = useNavigate();
     const { setToastMsg } = useToast();
 
-    console.log(photo)
 
 
     const handlePhotoChange = async (e) => {
@@ -30,7 +29,6 @@ const Register = () => {
             const file = e.target.files[0];
             const formData = new FormData();
             formData.append("image", file);
-            console.log(Object.fromEntries(formData));
             const res = await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData
             );
             setPhoto(res.data.data.url);

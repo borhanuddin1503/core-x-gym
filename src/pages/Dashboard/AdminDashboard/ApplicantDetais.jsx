@@ -23,7 +23,7 @@ const ApplicantDetails = () => {
     },
   });
 
-  console.log(applicant)
+ 
 
   // Confirm mutation
   const confirmMutation = useMutation({

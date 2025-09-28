@@ -101,7 +101,7 @@ const BeATrainer = () => {
         try {
             setLoading(true)
             const { className, availableDays, availableTimes, ...rest } = data;
-            console.log(className)
+        
             const finalData = {
                 ...rest,
                 profileImage: photo.url,

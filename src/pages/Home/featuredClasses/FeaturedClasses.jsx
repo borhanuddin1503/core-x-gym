@@ -1,18 +1,18 @@
 import React from "react";
 import UseAuth from "../../../custom hooks/UseAuth";
-import useSecureAxios from "../../../services/Axios/SecureAxios/useSecureAxios";
 import { useQuery } from "@tanstack/react-query";
 import ClassCard from "../../all classes/ClassCard";
+import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
 
 const FeaturedClasses = () => {
     const { user, observerLoading } = UseAuth();
-    const secureAxios = useSecureAxios();
+    const axiosInstancy = useAxiosInstency();
     const { data: featuredClasses = [], isLoading } = useQuery(
         {
             queryKey: ['featuredClasses'],
-            enabled: !!user && !observerLoading,
+            enabled: !observerLoading,
             queryFn: async () => {
-                const res = await secureAxios('feturedClasses');
+                const res = await axiosInstancy('feturedClasses');
                 return res.data;
             }
         }

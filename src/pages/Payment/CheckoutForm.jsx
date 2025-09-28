@@ -23,7 +23,6 @@ export default function PaymentForm({ booking, userQuery }) {
     const axiosInstency = useAxiosInstency();
     const secureAxios = useSecureAxios();
 
-    console.log(booking)
 
     useEffect(() => {
         async function createIntent() {

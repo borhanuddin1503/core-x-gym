@@ -31,7 +31,6 @@ const Navbar = () => {
             .catch(() => setToastMsg({ type: 'error', message: 'Something went wrong' }))
     }
 
-    console.log(theme)
 
     return (
         <nav className="navbar py-2 justify-between mb-1 rounded-2xl bg-gray700 sticky top-0 z-50">

@@ -15,8 +15,7 @@ const AddClassForm = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    console.log(photoURL)
-
+  
     // Fetch trainers using React Query
     const { data: trainers = [], isLoading, error } = useQuery({
         queryKey: ["trainersOptions"],
@@ -64,7 +63,6 @@ const AddClassForm = () => {
                 const formData = new FormData();
                 formData.append("image", compressedFile);
                 formData.append("name", file.name);
-                console.log(Object.fromEntries(formData));
                 await axios.post(`https://api.imgbb.com/1/upload?key=6ab62bb4d9a2890c9cfc80752bf4bb20`, formData)
                     .then((data) => {
                         setPhotoURL(data.data.data)

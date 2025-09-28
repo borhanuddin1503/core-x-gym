@@ -18,7 +18,6 @@ const ProfileUpdate = () => {
     const onSubmit = async (data) => {
         try {
             setLoading(true);
-            console.log(data.photo[0])
             let photoURL = user?.photoURL;
 
             if (data.photo[0]) {
@@ -39,7 +38,6 @@ const ProfileUpdate = () => {
                     });
             }
 
-            console.log(photoURL)
 
             await updateUserProfile({
                 displayName: data.name,
