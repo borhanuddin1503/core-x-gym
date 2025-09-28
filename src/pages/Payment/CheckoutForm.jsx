@@ -130,7 +130,7 @@ export default function PaymentForm({ booking, userQuery }) {
 
             {/* Booking Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 text-black">
-                <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <div className="bg-white p-6 rounded-xl border border-gray-700">
                     <h3 className="text-lg font-semibold mb-4 text-yellow-400">Booking Details</h3>
                     <p><span className="text-gray-400">Trainer:</span> {booking.trainerName}</p>
                     <p><span className="text-gray-400">ClassName:</span> {booking.slot.className}</p>
@@ -140,7 +140,7 @@ export default function PaymentForm({ booking, userQuery }) {
                     <p className="mt-4 font-extrabold text-yellow-300 text-2xl">$ {booking.price}</p>
                 </div>
 
-                <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <div className="bg-white p-6 rounded-xl border border-gray-700">
                     <h3 className="text-lg font-semibold mb-4 text-yellow-400">Your Info</h3>
                     <p><span className="text-gray-400">Name:</span> {userQuery.displayName}</p>
                     <p><span className="text-gray-400">Email:</span> {userQuery.email}</p>

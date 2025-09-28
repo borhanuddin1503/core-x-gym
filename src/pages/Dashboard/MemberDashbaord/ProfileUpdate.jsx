@@ -80,7 +80,7 @@ const ProfileUpdate = () => {
                         type="email"
                         value={user?.email}
                         readOnly
-                        className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                        className="input input-bordered w-full cursor-not-allowed"
                     />
                 </div>
 
