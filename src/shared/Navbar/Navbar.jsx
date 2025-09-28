@@ -4,14 +4,27 @@ import Logo from '../Logo';
 import UseAuth from '../../custom hooks/UseAuth';
 import Popup from './Popup';
 import useNavLinks from '../../custom hooks/useNavLinks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
     const { user, logOut } = UseAuth();
     const { setToastMsg } = useToast();
     const links = useNavLinks();
     const [isOpen, setIsOpen] = useState(false);
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("theme") || "light";
+    });
+
+    useEffect(() => {
+        if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+
     const handleLogOut = () => {
         logOut()
             .then(() => setToastMsg({ type: 'success', message: 'Logout Successful' }))
@@ -54,18 +67,12 @@ const Navbar = () => {
 
             {/* Right */}
             <div className="navbar-end flex gap-4 grow relative">
-                <input type="checkbox" className="toggle bg-gray-300 checked:bg-blue-500 border-gray-400"
-                    onChange={() => {
-                        setTheme(prev => {
-                            const newTheme = prev === 'light' ? 'dark' : 'light';
-                            if (newTheme === 'dark') {
-                                document.documentElement.classList.add('dark');
-                            } else {
-                                document.documentElement.classList.remove('dark');
-                            }
-                            return newTheme;
-                        });;
-                    }} />
+                <input
+                    type="checkbox"
+                    className="toggle bg-gray-300 checked:bg-blue-500 border-gray-400"
+                    checked={theme === "dark"}   //
+                    onChange={() => setTheme(prev => prev === "light" ? "dark" : "light")}
+                />
                 {user ? (
                     <Popup user={user} handleLogOut={handleLogOut} isOpen={isOpen} setIsOpen={setIsOpen}></Popup>
                 ) : (
