@@ -36,7 +36,7 @@ const TrainerBooking = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto p-6 space-y-10">
+        <div className="max-w-5xl mx-auto p-6 space-y-10 text-black">
             <h1 className="text-3xl font-bold text-main">Trainer Booking</h1>
 
             {/* Trainer Info */}

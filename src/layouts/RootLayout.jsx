@@ -33,7 +33,7 @@ const RootLayout = () => {
     }
 
     return (
-        <div className='p-2 bg-root-bg'>
+        <div className='bg-root-bg'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <ToastContainer></ToastContainer>

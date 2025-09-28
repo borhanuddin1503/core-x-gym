@@ -70,12 +70,12 @@ const AddSlot = () => {
     }
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+        <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow ">
             <h2 className="font-bold mb-4 text-main text-2xl">Add New Slot</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Class Name (Single Select) */}
                 <div>
-                    <label className="block font-medium mb-1">Class Name</label>
+                    <label className="block font-medium mb-1 text-black">Class Name</label>
                     <Controller
                         name="className"
                         control={control}
@@ -92,7 +92,7 @@ const AddSlot = () => {
 
                 {/* Available Days (Multi Select) */}
                 <div>
-                    <label className="block font-medium mb-1">Available Days</label>
+                    <label className="block font-medium mb-1 text-black">Available Days</label>
                     <Controller
                         name="availableDays"
                         control={control}
@@ -110,7 +110,7 @@ const AddSlot = () => {
 
                 {/* Available Times (Multi Select) */}
                 <div>
-                    <label className="block font-medium mb-1">Available Times</label>
+                    <label className="block font-medium mb-1 text-black">Available Times</label>
                     <Controller
                         name="availableTimes"
                         control={control}

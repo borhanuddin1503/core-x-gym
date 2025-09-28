@@ -7,10 +7,10 @@ const FeaturedSection = () => {
         <section className="py-20  rounded-2xl relative px-4 md:px-16" data-aos="zoom-in-up">
             {/* Section Heading */}
             <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray700">
                     Why Choose <span className="text-yellow-500">Our Gym</span>
                 </h2>
-                <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+                <p className="text-gray700 mt-4 max-w-2xl mx-auto">
                     Explore the key features that make our gym the perfect place for
                     your fitness journey.
                 </p>

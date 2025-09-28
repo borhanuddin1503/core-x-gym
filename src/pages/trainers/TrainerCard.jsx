@@ -27,7 +27,7 @@ const TrainerCard = ({ trainer }) => {
         </div>
 
         {/* Trainer Info */}
-        <h2 className="text-xl font-bold text-gray-800">{trainer.fullName}</h2>
+        <h2 className="text-xl font-bold text-black">{trainer.fullName}</h2>
         <p className="text-gray-500 text-sm">{trainer.skills?.join(", ")}</p>
 
         {/* Available Info */}

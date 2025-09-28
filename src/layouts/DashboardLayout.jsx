@@ -57,7 +57,7 @@ const DashboardLayout = () => {
     ));
 
   return (
-    <div className="">
+    <div className="relative">
       <Navbar></Navbar>
       <div className="drawer lg:drawer-open">
         <HeadProvider>
@@ -66,7 +66,7 @@ const DashboardLayout = () => {
         </HeadProvider>
 
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" ref={inputRef} />
-        <div className="drawer-content flex flex-col min-h-screen max-h-full bg-white">
+        <div className="drawer-content flex flex-col min-h-screen bg-white">
           {/* Navbar for mobile */}
           <div className="navbar bg-white shadow-md lg:hidden">
             <div className="flex-none">
@@ -75,7 +75,7 @@ const DashboardLayout = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className="inline-block w-6 h-6 stroke-current"
+                  className="inline-block w-6 h-6 stroke-current text-black"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>

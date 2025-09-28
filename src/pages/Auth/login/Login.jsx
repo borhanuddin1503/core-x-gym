@@ -86,7 +86,7 @@ const Login = () => {
     };
 
     return (
-        <div className="h-[calc(100vh-76px)] flex items-center justify-center">
+        <div className="h-[calc(100vh-76px)] flex items-center justify-center text-black">
 
             <HeadProvider>
                 <Title>Log In | CoreX-Gym</Title>
@@ -106,13 +106,13 @@ const Login = () => {
 
                 {/* Right: Form */}
                 <div className="md:w-1/2 p-8 py-20">
-                    <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                    <h2 className="text-3xl font-bold text-center text-gray700 mb-6">
                         Welcome Back
                     </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Email */}
-                        <div className="flex items-center border rounded-xl px-3 focus-within:border-indigo-400">
+                        <div className="flex items-center border rounded-xl px-3 border-black focus-within:border-indigo-400">
                             <FaEnvelope className="text-gray-400 mr-2" />
                             <input
                                 type="email"
@@ -124,7 +124,7 @@ const Login = () => {
                         </div>
 
                         {/* Password */}
-                        <div className="flex items-center border rounded-xl px-3 focus-within:border-indigo-400">
+                        <div className="flex items-center border rounded-xl px-3 border-black focus-within:border-indigo-400">
                             <FaLock className="text-gray-400 mr-2" />
                             <input
                                 type="password"
@@ -168,7 +168,7 @@ const Login = () => {
 
                     <p className="text-center font-bold text-[0.8rem] my-3">or</p>
 
-                    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-100 transition w-full font-bold justify-center hover:scale-105 transform cursor-pointer" onClick={handleLoginWithGoogle}>
+                    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg transition w-full font-bold justify-center hover:scale-105 transform cursor-pointer" onClick={handleLoginWithGoogle}>
                         <FcGoogle className="text-2xl" size={25} />
                         Continue with Google
                     </button>

@@ -64,13 +64,13 @@ const TrainerSlots = () => {
     if (trainer.slots.length === 0) return <div className="min-h-[calc(100vh-50px)] flex items-center justify-center"><h2 className="text-red-500 text-center font-bold">No Slots Available</h2></div>
 
     return (
-        <div className="max-w-4xl mx-auto mt-10">
+        <div className="max-w-4xl mx-auto mt-10 text-black">
             <h2 className="text-2xl font-bold text-main mb-5">
                 {trainer.fullName}'s Slots
             </h2>
 
             <table className="min-w-full border border-gray-300 text-sm border-collapse">
-                <thead className="bg-gray-100">
+                <thead className="">
                     <tr>
                         <th className="border border-gray-300 px-4 py-2">Class</th>
                         <th className="border border-gray-300 px-4 py-2">Days</th>

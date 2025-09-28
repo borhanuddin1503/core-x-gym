@@ -21,7 +21,7 @@ const ClassCard = ({ cls }) => {
 
         {/* Description */}
         <p className="text-gray-700  leading-relaxed mb-1">{cls.description}</p>
-        <p className="text-gray-700  leading-relaxed mb-6 font-bold"><span className='text-main'>Total Bookings:</span> {cls.bookings?.length || 0}</p>
+        <p className="text-gray700  leading-relaxed mb-6 font-bold"><span className='text-main'>Total Bookings:</span> {cls.bookings?.length || 0}</p>
 
       </div>
 

@@ -10,7 +10,7 @@ const FeaturedCard = ({ card }) => {
             <div className="p-4 rounded-full bg-yellow-100 mb-4">
                 <Icon className="w-10 h-10 text-yellow-500" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 text-center mb-2">
+            <h3 className="text-xl font-bold text-gray700 text-center mb-2">
                 {card.title}
             </h3>
             <p className="text-gray-600 text-center">{card.description}</p>

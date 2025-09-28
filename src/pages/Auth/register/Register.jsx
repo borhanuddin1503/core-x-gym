@@ -93,7 +93,7 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center text-black">
             <HeadProvider>
                 <Title>Register | CoreX-Gym</Title>
                 <Meta name="description" content="Register of coreX-gym" />
@@ -112,7 +112,7 @@ const Register = () => {
 
                 {/* Right: Form */}
                 <div className="md:w-1/2 p-8">
-                    <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                    <h2 className="text-3xl font-bold text-center text-gray700 mb-6">
                         Create an Account
                     </h2>
 
