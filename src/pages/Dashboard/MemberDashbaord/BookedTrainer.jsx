@@ -75,7 +75,7 @@ const BookedTrainer = () => {
             {/* Table */}
             <table className="table w-full border">
                 <thead>
-                    <tr className="bg-gray-200">
+                    <tr className="text-black">
                         <th>#</th>
                         <th>Trainer Name</th>
                         <th>Class</th>

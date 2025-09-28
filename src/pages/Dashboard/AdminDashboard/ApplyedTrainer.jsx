@@ -37,7 +37,7 @@ const ApplyedTrainer = () => {
             <h2 className="text-2xl font-bold mb-4 text-main/80">Applied Trainers</h2>
             <table className="table w-full text-black">
                 <thead>
-                    <tr className="bg-gray200">
+                    <tr className="text-black">
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>

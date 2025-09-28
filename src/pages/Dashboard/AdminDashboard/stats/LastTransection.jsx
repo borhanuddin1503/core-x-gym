@@ -24,7 +24,7 @@ const LastTransection = () => {
             </h3>
             <table className="w-full border text-black">
                 <thead>
-                    <tr className="bg-yellow-100 text-gray200">
+                    <tr className="text-black border font-bold">
                         <th className="p-2">Member</th>
                         <th className="p-2">Amount</th>
                         <th className="p-2">Trainer</th>
