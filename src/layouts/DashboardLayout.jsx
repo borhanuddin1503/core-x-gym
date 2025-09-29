@@ -42,7 +42,7 @@ const DashboardLayout = () => {
         <NavLink
           to={item.to}
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-3 transition rounded-lg font-medium hover:bg-main/20 hover:text-main ${isActive ? "bg-main/30 text-main" : "text-gray-700"
+            `flex items-center gap-3 px-4 py-3 transition rounded-lg font-medium text-gray700 hover:bg-main/20 hover:text-main ${isActive ? "bg-main/30 text-main" : "text-gray-700"
             }`
           }
           onClick={() => {

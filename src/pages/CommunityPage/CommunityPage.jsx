@@ -80,7 +80,7 @@ const CommunityPage = () => {
                     <h3 className="text-2xl font-semibold text-main mb-2">{post.title}</h3>
 
                     {/* Author + Badge */}
-                    <p className="text-sm text-gray-500 mb-4 flex items-center gap-2">
+                    <p className="text-sm text-gray700 mb-4 flex items-center gap-2">
                         ✍️ <span className="font-medium">{post.authInfo?.authName}</span>
                         <span
                             className={`ml-2 text-xs px-2 py-0.5 rounded-full ${post.authInfo?.role === "admin"
@@ -93,7 +93,7 @@ const CommunityPage = () => {
                     </p>
 
                     {/* Content */}
-                    <p className="text-gray-700 leading-relaxed mb-6">{post.content}</p>
+                    <p className="text-gray700 leading-relaxed mb-6">{post.content}</p>
 
                     {/* Voting */}
                     <div className="flex items-center gap-6">

@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useSecureAxios from "../../../services/Axios/SecureAxios/useSecureAxios";
 import Loading from "../../../shared/Loading/Loading";
 import 'swiper/css/pagination';
-import {  Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 const Reviews = () => {
     const secureAxios = useSecureAxios();
@@ -22,7 +22,7 @@ const Reviews = () => {
     if (isLoading) return <Loading></Loading>;
 
     return (
-        <div className="max-w-7xl mx-auto py-10">
+        <div className="max-w-7xl mx-auto py-10 px-5">
             <h2 className="text-3xl font-bold text-center text-gray700 mb-6">What Our <span className="text-main">Members Say</span></h2>
             <Swiper
                 effect={'coverflow'}
@@ -31,10 +31,21 @@ const Reviews = () => {
                 slidesPerView={3}
                 loop={true}
                 spaceBetween={30}
-                autoplay= {true}
+                autoplay={true}
                 navigation={true}
-                modules={[ Pagination , Navigation , Autoplay]}
+                modules={[Pagination, Navigation, Autoplay]}
                 className="mySwiper"
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                }}
             >
                 {reviews.map((r) => (
                     <SwiperSlide key={r._id}>

@@ -33,7 +33,7 @@ const Popup = ({ user, handleLogOut }) => {
 
       {/* Popup Menu */}
       <div
-        className={`absolute right-0 top-full min-w-[22rem] bg-white shadow-2xl rounded-2xl p-5 text-gray-700 z-50
+        className={`absolute right-0 top-full min-w-[22rem] bg-white shadow-2xl rounded-2xl p-5 text-black z-50
           transition-all duration-300
           group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 
           ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}
@@ -48,7 +48,7 @@ const Popup = ({ user, handleLogOut }) => {
             <p className="flex items-center gap-2 font-semibold text-lg">
               <UserIcon size={18} /> {user?.displayName || "User"}
             </p>
-            <p className="flex items-center gap-2 text-sm text-gray-500">
+            <p className="flex items-center gap-2 text-sm text-gray700">
               <Mail size={16} /> {user?.email}
             </p>
           </div>

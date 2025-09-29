@@ -19,7 +19,7 @@ const FeaturedClasses = () => {
     )
 
     return (
-        <section className="py-10  rounded-2xl relative px-4 md:px-16" data-aos="zoom-in-up">
+        <section className="py-10 rounded-2xl relative px-4 max-w-7xl mx-auto" data-aos="zoom-in-up">
             {/* Section Heading */}
             <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-gray700">
@@ -31,7 +31,7 @@ const FeaturedClasses = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
                 {featuredClasses.map((cls , i) =><ClassCard key={cls._id} cls={cls}></ClassCard>)}
             </div>
         </section>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../../../shared/Loading/Loading";
 import UseAuth from "../../../custom hooks/UseAuth";
 import useSecureAxios from "../../../services/Axios/SecureAxios/useSecureAxios";
+import Loading from "../../../shared/Loading/Loading";
 
 const ActivityLog = () => {
     const secureAxios = useSecureAxios();
@@ -50,7 +50,7 @@ const ActivityLog = () => {
                 </thead>
                 <tbody>
 
-                    <tr>
+                    <tr className="text-black">
                         <td className="font-semibold">{log.fullName}</td>
                         <td>{log.email}</td>
                         <td>

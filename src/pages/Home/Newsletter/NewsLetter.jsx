@@ -36,7 +36,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto my-16 p-6 md:p-10 bg-white shadow-lg rounded-2xl grid md:grid-cols-2 gap-10 items-center" data-aos="zoom-in-up">
+    <div className="max-w-7xl mx-auto my-16 p-6 md:p-10 bg-white shadow-lg rounded-2xl grid md:grid-cols-2 gap-10 items-center" data-aos="zoom-in-up">
       {/* Left Side Image */}
       <div className="relative" >
         <img

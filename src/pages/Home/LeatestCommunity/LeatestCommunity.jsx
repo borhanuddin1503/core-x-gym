@@ -34,7 +34,7 @@ const LatestPosts = () => {
     }
 
     return (
-        <section className="max-w-6xl mx-auto px-4 py-12" data-aos='zoom-in-up'>
+        <section className="max-w-7xl mx-auto px-4 py-12" data-aos='zoom-in-up'>
             {/* Section Heading */}
             <h2 className="text-3xl md:text-4xl font-extrabold text-center text-main mb-10 uppercase tracking-wide">
                 🏋️‍♂️ Latest Community Posts
