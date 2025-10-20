@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import UseAuth from "../../custom hooks/UseAuth";
 import { useNavigate } from "react-router";
 import Loading from "../../shared/Loading/Loading";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { IoArrowBack, IoArrowForwardOutline } from "react-icons/io5";
 
 
 const CommunityPage = () => {
@@ -74,7 +76,7 @@ const CommunityPage = () => {
             {posts.map((post) => (
                 <motion.div
                     key={post._id}
-                    className="bg-white shadow-lg hover:shadow-2xl transition duration-300 rounded-2xl p-6 border border-gray-100"
+                    className="shadow-lg hover:shadow-2xl transition duration-300 rounded-2xl p-6 border border-gray-100"
                 >
                     {/* Title */}
                     <h3 className="text-2xl font-semibold text-main mb-2">{post.title}</h3>
@@ -117,41 +119,47 @@ const CommunityPage = () => {
             ))}
 
 
-            {/* handlePrevButton  */}
-            <button
-                onClick={() => setPage((prev) => prev - 1)}
-                className="px-4 py-2 rounded-lg bg-[#0f172a] text-[#22d3ee] font-medium border border-[#22d3ee] shadow hover:bg-[#1e293b] disabled:opacity-40 cursor-pointer"
-                disabled={page === 1}
-            >
-                prev
-            </button>
+            {/* pagination */}
+            <div className="text-center flex gap-2 items-center justify-center">
+                {/* handlePrevButton  */}
+                <button
+                    onClick={() => setPage((prev) => prev - 1)}
+                    className="px-4 py-1 text-xs rounded-4xl text-main font-medium border border-main shadow disabled:cursor-not-allowed cursor-pointer flex items-center gap-2"
+                    disabled={page === 1}
+                >
+                    <IoArrowBack />
+                    prev
+                </button>
 
 
-            {/* manage page click */}
-            {
-                Array.from({ length: totalPage }, (_, i) => (
-                    <button
-                        key={i + 1}
-                        onClick={() => setPage(i + 1)}
-                        className={`px-4 py-2 rounded-lg font-medium transition-all border cursor-pointer ${page === i + 1
-                            ? "bg-main text-black border-main shadow-lg"
-                            : "bg-[#0f172a] text-gray-300 border-gray-600 hover:bg-[#1e293b] hover:text-main"
-                            }`}
-                    >
-                        {i + 1}
-                    </button>)
-                )
-            }
+                {/* manage page click */}
+                {
+                    Array.from({ length: totalPage }, (_, i) => (
+                        <button
+                            key={i + 1}
+                            onClick={() => setPage(i + 1)}
+                            className={`w-7 h-7 rounded-full font-medium transition-all text-xs border cursor-pointer ${page === i + 1
+                                ? "bg-main border-main shadow-lg text-white"
+                                : "border border-main text-main hover:text-white hover:bg-main"
+                                }`}
+                        >
+                            {i + 1}
+                        </button>)
+                    )
+                }
 
 
-            {/* next button */}
-            <button
-                onClick={() => setPage((prev) => prev + 1)}
-                className="px-4 py-2 rounded-lg bg-[#0f172a] text-[#22d3ee] font-medium border border-[#22d3ee] shadow hover:bg-[#1e293b] disabled:opacity-40 cursor-pointer"
-                disabled={page === totalPage}
-            >
-                Next
-            </button>
+                {/* next button */}
+                <button
+                    onClick={() => setPage((prev) => prev + 1)}
+                    className="px-4 py-1 text-xs rounded-4xl text-main font-medium border border-main shadow disabled:cursor-not-allowed cursor-pointer flex items-center gap-2"
+                    disabled={page === totalPage}
+                >
+                    Next
+                    <IoArrowForwardOutline />
+
+                </button>
+            </div>
 
         </div>
     );

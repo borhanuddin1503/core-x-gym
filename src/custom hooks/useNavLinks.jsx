@@ -7,14 +7,13 @@ const useNavLinks = () => {
 
     const links = [
         { path: "/", label: "Home" },
-        { path: "/trainers", label: "Trainers" },
         { path: "/classes", label: "Classes" },
-        { path: "/community", label: "Community" },
-        { path: "/be-a-trainer", label: "Be a Trainer" },
-
+        { path: "/trainers", label: "Trainers" },
     ];
 
     if (user) {
+        links.push({ path: "/community", label: "Community" });
+        links.push({ path: "/be-a-trainer", label: "Be a Trainer" });
         links.push({ path: "/dashboard", label: "Dashboard" });
     }
 

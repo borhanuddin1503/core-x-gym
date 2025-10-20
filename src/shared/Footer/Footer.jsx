@@ -2,12 +2,14 @@ import React from "react";
 import { Link } from "react-router";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import useNavLinks from "../../custom hooks/useNavLinks";
+import useTheme from "../../custom hooks/useTheme";
 
 const Footer = () => {
     const links = useNavLinks();
+    const {theme} = useTheme();
 
     return (
-        <footer className="bg-[#0f172a] text-gray-300 pt-10 pb-6">
+        <footer className={`bg-[#0f172a] text-gray-300 pt-10 pb-6 ${theme === 'dark' && 'border-t border-gray-500'} transition-transform`}>
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
 
                 {/* Brand Info */}

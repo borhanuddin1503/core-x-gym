@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
 import {
     Elements,
     CardElement,
@@ -69,6 +68,7 @@ export default function PaymentForm({ booking, userQuery }) {
                 setLoading(false);
                 return;
             }
+            console.log(booking)
 
             if (paymentIntent && paymentIntent.status === "succeeded") {
                 await Promise.all([
@@ -92,8 +92,7 @@ export default function PaymentForm({ booking, userQuery }) {
                         userEmail: userQuery.email,
                         packageName: booking.packageName,
                     }),
-
-                    secureAxios.patch(`/classes/bookingCount/${booking.slot.classId}` , {
+                    secureAxios.patch(`/classes/bookingCount/${booking.slot.classId}`, {
                         userName: userQuery.displayName,
                         userEmail: userQuery.email,
                         trainerEmail: booking.trainerName,

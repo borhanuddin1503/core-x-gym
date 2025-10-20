@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'community',
-        Component: CommunityPage
+        element: <PrivateRoute><CommunityPage></CommunityPage></PrivateRoute>
       },
       {
         path:'register',

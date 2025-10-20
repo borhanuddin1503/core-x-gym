@@ -3,10 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { FaArrowRight } from "react-icons/fa";
 import Loading from "../../../shared/Loading/Loading";
 import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
+import { useNavigate } from "react-router";
+import useTheme from "../../../custom hooks/useTheme";
 
 const LatestPosts = () => {
-    const axiosInstancy = useAxiosInstency()
-
+    const axiosInstancy = useAxiosInstency();
+    const navigate = useNavigate();
+    const {theme} = useTheme()
     // React Query fetch function
     const fetchLatestPosts = async () => {
         const res = await axiosInstancy.get("/posts/latest");
@@ -34,45 +37,42 @@ const LatestPosts = () => {
     }
 
     return (
-        <section className="max-w-7xl mx-auto px-4 py-12" data-aos='zoom-in-up'>
+        <section className="max-w-7xl mx-auto px-4 py-10" data-aos='zoom-in-up'>
             {/* Section Heading */}
-            <h2 className="text-3xl md:text-4xl font-extrabold text-center text-main mb-10 uppercase tracking-wide">
+            <h2 className="text-3xl font-extrabold text-center text-main mb-10 uppercase tracking-wide">
                 🏋️‍♂️ Latest Community Posts
             </h2>
 
             {/* Grid */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
                 {posts.map((post) => (
                     <div
                         key={post._id}
-                        className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 relative overflow-hidden"
+                        onClick={()=>navigate('/community')}
+                        className={`group rounded-2xl shadow-xl transition-transform duration-300 cursor-pointer p-6 relative overflow-hidden flex flex-col justify-between ${theme === 'dark'&& 'border border-gray-500'}`}
                     >
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-main/10 via-transparent to-main/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        <div>
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-main/10 via-transparent to-main/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-                        {/* Title */}
-                        <h3 className="text-2xl font-bold text-main mb-3 group-hover:underline">
-                            {post.title}
-                        </h3>
+                            {/* Title */}
+                            <h3 className="text-2xl font-bold text-main mb-3 group-hover:underline">
+                                {post.title}
+                            </h3>
 
-                        {/* Short content */}
-                        <p className="text-gray200 leading-relaxed mb-5 line-clamp-3">
-                            {post.content}
-                        </p>
+                            {/* Short content */}
+                            <p className="text-gray200 leading-relaxed mb-5 line-clamp-3">
+                                {post.content}
+                            </p>
+                        </div>
 
-                        {/* Author */}
-                        <p className="text-sm text-gray-500 mb-4">
-                            ✍️ {post.authInfo?.authName || "Anonymous"} •{" "}
-                            <span className="capitalize">{post.authInfo?.role}</span>
-                        </p>
-
-                        {/* Button */}
-                        <a
-                            href={`/community/${post._id}`}
-                            className="inline-flex items-center gap-2 text-main font-semibold hover:gap-3 transition-all"
-                        >
-                            Read More <FaArrowRight />
-                        </a>
+                        <div>
+                            {/* Author */}
+                            <p className="text-sm text-gray-500 mb-4">
+                                ✍️ {post.authInfo?.authName || "Anonymous"} •{" "}
+                                <span className="capitalize">{post.authInfo?.role}</span>
+                            </p>
+                        </div>
                     </div>
                 ))}
             </div>

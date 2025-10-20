@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import { 
   FaHome, FaHistory, FaUserEdit, FaUsers, FaCalendarAlt, FaPlusCircle, 
   FaWallet, FaNewspaper, FaTasks, FaChartLine 
@@ -9,10 +9,13 @@ import useUserRole from "../custom hooks/useUserRole";
 import { HeadProvider, Meta, Title } from "react-head";
 import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
+import useTheme from "../custom hooks/useTheme";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
   const inputRef = useRef();
+  const {pathname} = useLocation();
+  const {theme} = useTheme();
 
   const navItems = [
     { to: "/dashboard", icon: FaHome, label: "Home" },
@@ -41,8 +44,8 @@ const DashboardLayout = () => {
       <li key={idx} className="rounded-lg mb-1">
         <NavLink
           to={item.to}
-          className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-3 transition rounded-lg font-medium text-gray700 hover:bg-main/20 hover:text-main ${isActive ? "bg-main/30 text-main" : "text-gray-700"
+          className={() =>
+            `flex items-center gap-3 px-4 py-2 transition text-xs rounded-lg font-medium text-gray700 hover:bg-main/20 hover:text-main ${pathname === item.to && "bg-main/30 text-main" 
             }`
           }
           onClick={() => {
@@ -65,16 +68,16 @@ const DashboardLayout = () => {
         </HeadProvider>
 
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" ref={inputRef} />
-        <div className="drawer-content flex flex-col min-h-screen bg-white">
+        <div className="drawer-content flex flex-col min-h-screen ">
           {/* Navbar for mobile */}
-          <div className="navbar bg-white shadow-md lg:hidden">
+          <div className="navbar shadow-md lg:hidden">
             <div className="flex-none">
               <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className="inline-block w-6 h-6 stroke-current text-black"
+                  className="inline-block w-6 h-6 stroke-current"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -84,13 +87,13 @@ const DashboardLayout = () => {
           </div>
 
           {/* Page content */}
-          <main className="p-8 bg-white">
+          <main className="p-8 ">
             <Outlet />
           </main>
         </div>
 
         {/* Sidebar */}
-        <div className="drawer-side bg-white shadow-lg ">
+        <div className={`drawer-side shadow-lg ${theme === 'dark' && 'border-r border-gray-500'}`}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <div className="overflow-y-auto flex flex-col justify-between  w-80 p-4">
             <div>
@@ -99,21 +102,21 @@ const DashboardLayout = () => {
 
               {!roleLoading && role === "trainer" && (
                 <>
-                  <h3 className="text-gray-400 text-sm uppercase mt-6 mb-2 px-4">Rider Options</h3>
+                  <h3 className=" text-sm uppercase mt-6 mb-2 px-4">Rider Options</h3>
                   <ul className="menu space-y-1">{renderNavItems(trainerItems)}</ul>
                 </>
               )}
 
               {!roleLoading && role === "admin" && (
                 <>
-                  <h3 className="text-gray-400 text-sm uppercase mt-6 mb-2 px-4">Admin Options</h3>
+                  <h3 className=" text-sm uppercase mt-6 mb-2 px-4">Admin Options</h3>
                   <ul className="menu space-y-1">{renderNavItems(adminItems)}</ul>
                 </>
               )}
             </div>
 
             {/* Optional Footer */}
-            <div className="mt-auto text-center text-gray-400 text-sm">
+            <div className="mt-auto text-center text-sm">
               &copy; {new Date().getFullYear()} ProFast. All rights reserved.
             </div>
           </div>

@@ -22,7 +22,7 @@ const Reviews = () => {
     if (isLoading) return <Loading></Loading>;
 
     return (
-        <div className="max-w-7xl mx-auto py-10 px-5">
+        <div className="max-w-7xl mx-auto py-10 px-4">
             <h2 className="text-3xl font-bold text-center text-gray700 mb-6">What Our <span className="text-main">Members Say</span></h2>
             <Swiper
                 effect={'coverflow'}
@@ -32,7 +32,7 @@ const Reviews = () => {
                 loop={true}
                 spaceBetween={30}
                 autoplay={true}
-                navigation={true}
+                pagination={true}
                 modules={[Pagination, Navigation, Autoplay]}
                 className="mySwiper"
                 breakpoints={{
@@ -49,7 +49,7 @@ const Reviews = () => {
             >
                 {reviews.map((r) => (
                     <SwiperSlide key={r._id}>
-                        <div className="bg-white shadow-md rounded-2xl p-6 flex flex-col justify-between h-50 border border-black">
+                        <div className="shadow-md rounded-2xl p-6 flex flex-col justify-between h-60 border border-gray-500">
                             <div className="flex items-center gap-3 mb-4">
                                 <img
                                     src={r.user.photoURL}
@@ -57,7 +57,7 @@ const Reviews = () => {
                                     className="w-12 h-12 rounded-full"
                                 />
                                 <div>
-                                    <h3 className="font-semibold text-black">{r.user.displayName}</h3>
+                                    <h3 className="font-semibol">{r.user.displayName}</h3>
                                 </div>
                             </div>
                             <p className="text-gray700 italic mb-4">"{r.review}"</p>

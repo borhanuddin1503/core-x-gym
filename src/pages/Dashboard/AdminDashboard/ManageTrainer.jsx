@@ -62,24 +62,24 @@ const ManageTrainers = () => {
     return (
         <div className="overflow-x-auto p-4">
             <h2 className="text-2xl font-bold mb-4">All Trainers</h2>
-            <table className="table w-full text-black border-collapse">
-                <thead className="text-black">
-                    <tr >
-                        <th className="border">#</th>
-                        <th className="border">Name</th>
-                        <th className="border">Email</th>
-                        <th className="border">Experience</th>
-                        <th className="border">Action</th>
+            <table className="table-sm w-full border-collapse">
+                <thead className="">
+                    <tr className="bg-main text-left font-medium">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Experience</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {trainers.map((trainer, index) => (
-                        <tr key={trainer._id}>
-                            <td className="border">{index + 1}</td>
-                            <td className="border">{trainer.fullName}</td>
-                            <td className="border">{trainer.email}</td>
-                            <td className="border">{trainer.experience} yrs</td>
-                            <td className="border">
+                        <tr key={trainer._id} className="border-b border-gray-500">
+                            <td>{index + 1}</td>
+                            <td>{trainer.fullName}</td>
+                            <td>{trainer.email}</td>
+                            <td>{trainer.experience} yrs</td>
+                            <td>
                                 <button
                                     onClick={() => handleDelete(trainer)}
                                     className="btn btn-sm btn-error text-white"

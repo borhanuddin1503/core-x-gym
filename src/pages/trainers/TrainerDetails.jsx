@@ -33,7 +33,7 @@ const TrainerDetails = () => {
     }
 
     return (
-        <div className="max-w-6xl mx-auto p-6 space-y-10">
+        <div className="max-w-6xl mx-auto p-4 py-6 md:py-15 space-y-10">
             {/* SEO */}
             <HeadProvider>
                 <Title>Trainer Details | CoreX-Gym</Title>
@@ -54,7 +54,7 @@ const TrainerDetails = () => {
                 </p>
                 <button
                     onClick={() => navigate("/be-a-trainer")}
-                    className="bg-white text-main px-6 py-3 rounded-xl font-semibold hover:bg-white/90 transition"
+                    className="bg-white text-main px-6 py-3 rounded-xl font-semibold hover:bg-white/90 transition cursor-pointer"
                 >
                     Become a Trainer
                 </button>
@@ -66,7 +66,7 @@ const TrainerDetails = () => {
                 // Two-column layout
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Trainer Info */}
-                    <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div className="rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
                         <div className="flex items-center gap-6">
                             <img
                                 src={trainer.profileImage}
@@ -77,10 +77,10 @@ const TrainerDetails = () => {
                                 <h2 className="text-2xl font-bold text-main flex items-center gap-2">
                                     <User className="w-6 h-6" /> {trainer.fullName}
                                 </h2>
-                                <p className="text-gray-600 mt-1">
+                                <p className=" mt-1">
                                     Age: {trainer.age} | Experience: {trainer.experience} years
                                 </p>
-                                <div className="flex flex-col text-gray-600 mt-2">
+                                <div className="flex flex-col text-gray-400 mt-2">
                                     <span className="flex items-center gap-2">
                                         <Phone className="w-4 h-4 text-main" /> {trainer.phone}
                                     </span>
@@ -110,7 +110,7 @@ const TrainerDetails = () => {
 
 
                     {/* slots information */}
-                    <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
+                    <div className=" rounded-2xl shadow-md border border-gray-200 p-6 space-y-6">
                         <h3 className="text-xl font-bold text-main flex items-center gap-2">
                             <Calendar className="w-6 h-6" /> Available Slots
                         </h3>

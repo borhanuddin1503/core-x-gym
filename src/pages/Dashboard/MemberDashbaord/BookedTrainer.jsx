@@ -69,13 +69,13 @@ const BookedTrainer = () => {
         );
 
     return (
-        <div className="overflow-x-auto p-6 max-w-5xl mx-auto mt-10 text-black">
+        <div className="overflow-x-auto py-6 mx-auto mt-10">
             <h2 className="text-2xl font-bold text-main mb-6">My Booked Trainers</h2>
 
             {/* Table */}
-            <table className="table w-full border">
+            <table className=" w-full  table-sm ">
                 <thead>
-                    <tr className="text-black">
+                    <tr className="text-left font-medium text-sm bg-main ">
                         <th>#</th>
                         <th>Trainer Name</th>
                         <th>Class</th>
@@ -99,7 +99,7 @@ const BookedTrainer = () => {
                             paidAt,
                         } = booking;
                         return (
-                            <tr key={booking._id}>
+                            <tr key={booking._id} className="border-b border-gray-500">
                                 <td>{index + 1}</td>
                                 <td>{trainerName}</td>
                                 <td>{slot.className}</td>

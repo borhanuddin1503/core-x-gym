@@ -58,7 +58,7 @@ const ApplicantDetails = () => {
         Trainer Application Details
       </h2>
 
-      <div className="bg-white shadow-xl rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center md:items-start">
+      <div className="shadow-xl rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center md:items-start max-w-5xl mx-auto">
         {/* Profile Image */}
         <img
           src={applicant.profileImage}
@@ -69,19 +69,19 @@ const ApplicantDetails = () => {
         {/* Details */}
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Name:</span> {applicant.fullName}</p>
-            <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Email:</span> {applicant.email}</p>
-            <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Phone:</span> {applicant.phone}</p>
-            <p className="font-semibold text-gray-700 text-lg"><span className="text-main">Age:</span> {applicant.age}</p>
+            <p className="font-semibold"><span className="text-main">Name:</span> {applicant.fullName}</p>
+            <p className="font-semibold"><span className="text-main">Email:</span> {applicant.email}</p>
+            <p className="font-semibold"><span className="text-main">Phone:</span> {applicant.phone}</p>
+            <p className="font-semibold"><span className="text-main">Age:</span> {applicant.age}</p>
           </div>
           <div>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Experience:</span> {applicant.experience} yrs</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Skills:</span> {applicant.skills?.join(", ")}</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Days:</span> {applicant?.slots?.map((slt , i) => <span key={i}>{slt.availableDays?.join(", ")}</span>)}</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Available Times:</span>{
+            <p className="font-semibold"><span className="text-main">Experience:</span> {applicant.experience} yrs</p>
+            <p className="font-semibold"><span className="text-main">Skills:</span> {applicant.skills?.join(", ")}</p>
+            <p className="font-semibold"><span className="text-main">Available Days:</span> {applicant?.slots?.map((slt , i) => <span key={i}>{slt.availableDays?.join(", ")}</span>)}</p>
+            <p className="font-semibold"><span className="text-main">Available Times:</span>{
               applicant.slots.map((slt , i) => <span key={i}>{slt.availableTimes}</span>)
             }</p>
-            <p className="font-semibold text-gray-700  text-lg"><span className="text-main">Applied At:</span> {new Date(applicant.applayAt).toLocaleString()}</p>
+            <p className="font-semibold"><span className="text-main">Applied At:</span> {new Date(applicant.applayAt).toLocaleString()}</p>
           </div>
         </div>
       </div>
@@ -90,13 +90,13 @@ const ApplicantDetails = () => {
       <div className="flex gap-4 mt-6 justify-center">
         <button
           onClick={() => confirmMutation.mutate()}
-          className="btn btn-success btn-lg shadow-lg hover:scale-105 transform transition"
+          className="btn bg-main btn-lg border-none shadow-lg hover:scale-105 transform transition"
         >
           Confirm
         </button>
         <button
           onClick={() => setShowRejectModal(true)}
-          className="btn btn-error btn-lg shadow-lg hover:scale-105 transform transition text-white"
+          className="py-2 px-4 rounded-lg border-main border bg-none btn-lg shadow-lg hover:scale-105 transform transition text-main cursor-pointer"
         >
           Reject
         </button>

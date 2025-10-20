@@ -63,7 +63,7 @@ const AddSlot = () => {
     };
 
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     }
 
@@ -73,7 +73,7 @@ const AddSlot = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Class Name (Single Select) */}
                 <div>
-                    <label className="block font-medium mb-1 text-black">Class Name</label>
+                    <label className="block font-medium mb-1 ">Class Name</label>
                     <Controller
                         name="className"
                         control={control}
@@ -83,6 +83,28 @@ const AddSlot = () => {
                                 {...field}
                                 options={classOptions}
                                 placeholder="Select class..."
+                                styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: "var(--thin-black)",
+                                    }),
+                                }}
                             />
                         )}
                     />
@@ -90,7 +112,7 @@ const AddSlot = () => {
 
                 {/* Available Days (Multi Select) */}
                 <div>
-                    <label className="block font-medium mb-1 text-black">Available Days</label>
+                    <label className="block font-medium mb-1 ">Available Days</label>
                     <Controller
                         name="availableDays"
                         control={control}
@@ -101,14 +123,30 @@ const AddSlot = () => {
                                 options={daysOptions}
                                 isMulti
                                 placeholder="Select days..."
+                                 styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                }}
                             />
                         )}
                     />
                 </div>
 
-                {/* Available Times (Multi Select) */}
+                {/* Available Times (single Select) */}
                 <div>
-                    <label className="block font-medium mb-1 text-black">Available Times</label>
+                    <label className="block font-medium mb-1 ">Available Times</label>
                     <Controller
                         name="availableTimes"
                         control={control}
@@ -118,6 +156,28 @@ const AddSlot = () => {
                                 {...field}
                                 options={timeOptions}
                                 placeholder="Select times..."
+                                styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: "var(--thin-black)",
+                                    }),
+                                }}
                             />
                         )}
                     />

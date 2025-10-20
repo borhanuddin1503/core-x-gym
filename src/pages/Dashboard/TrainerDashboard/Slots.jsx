@@ -64,28 +64,28 @@ const TrainerSlots = () => {
     if (trainer.slots.length === 0) return <div className="min-h-[calc(100vh-50px)] flex items-center justify-center"><h2 className="text-red-500 text-center font-bold">No Slots Available</h2></div>
 
     return (
-        <div className="max-w-4xl mx-auto mt-10 text-black">
+        <div className=" mx-auto mt-10">
             <h2 className="text-2xl font-bold text-main mb-5">
                 {trainer.fullName}'s Slots
             </h2>
 
-            <table className="min-w-full border border-gray-300 text-sm border-collapse">
+            <table className="min-w-full text-sm">
                 <thead className="">
-                    <tr>
-                        <th className="border border-gray-300 px-4 py-2">Class</th>
-                        <th className="border border-gray-300 px-4 py-2">Days</th>
-                        <th className="border border-gray-300 px-4 py-2">Times</th>
-                        <th className="border border-gray-300 px-4 py-2">Booked Users</th>
-                        <th className="border border-gray-300 px-4 py-2">Action</th>
+                    <tr className="bg-main">
+                        <th className="px-4 py-2">Class</th>
+                        <th className="px-4 py-2">Days</th>
+                        <th className="px-4 py-2">Times</th>
+                        <th className="px-4 py-2">Booked Users</th>
+                        <th className="px-4 py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {trainer.slots?.map((slot, idx) => (
-                        <tr key={idx} className="text-center">
-                            <td className="border border-gray-300 px-4 py-2">{slot.className}</td>
-                            <td className="border border-gray-300 px-4 py-2">{slot.availableDays.join(", ")}</td>
-                            <td className="border border-gray-300 px-4 py-2">{slot.availableTimes}</td>
-                            <td className="border border-gray-300 px-4 py-2">
+                        <tr key={idx} className="text-center border-b border-gray-500">
+                            <td className=" px-4 py-2">{slot.className}</td>
+                            <td className=" px-4 py-2">{slot.availableDays.join(", ")}</td>
+                            <td className=" px-4 py-2">{slot.availableTimes}</td>
+                            <td className=" px-4 py-2">
                                 {slot.bookings?.length > 0 ? (
                                     <ul className="list-none list-inside">
                                         {slot.bookings.map((b, i) => (
@@ -96,7 +96,7 @@ const TrainerSlots = () => {
                                     <span>No bookings</span>
                                 )}
                             </td>
-                            <td className="border border-gray-300 px-4 py-2">
+                            <td className=" px-4 py-2">
                                 <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleDelete(slot.className)}>
                                     Delete
                                 </button>

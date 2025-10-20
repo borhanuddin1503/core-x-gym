@@ -15,7 +15,7 @@ const AddClassForm = () => {
     const [photoLoading, setPhotoLoading] = useState(false);
     const [loading, setLoading] = useState(false);
 
-  
+
     // Fetch trainers using React Query
     const { data: trainers = [], isLoading, error } = useQuery({
         queryKey: ["trainersOptions"],
@@ -79,8 +79,8 @@ const AddClassForm = () => {
         mutationFn: async (classInfo) => {
             const res = await axiosSecure.post('/classes', classInfo);
         },
-        onSuccess: () => { 
-            Swal.fire('Success', 'Class Added Successfully', "success") 
+        onSuccess: () => {
+            Swal.fire('Success', 'Class Added Successfully', "success")
         },
         onError: () => { Swal.fire('Error', 'Something went wrong', 'error') }
     })
@@ -97,7 +97,7 @@ const AddClassForm = () => {
             }
             classMutation.mutate(finalData);
             reset()
-        }finally{
+        } finally {
             setLoading(false)
         }
     }
@@ -105,17 +105,23 @@ const AddClassForm = () => {
     if (isLoading || loading) return <Loading></Loading>;
 
     return (
-        <div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-xl">
+        <div className="max-w-3xl mx-auto  p-6 rounded-2xl shadow-xl">
             <h2 className="text-2xl font-bold mb-6 text-main">Add New Class</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
                 <div>
-                    <label className="block font-medium mb-1 text-black">Class Name</label>
+                    <label className="block font-medium mb-1 ">Class Name</label>
                     <input
                         type="text"
-                        className="input input-bordered w-full"
+                        className="w-full py-2 px-4 border border-main rounded-lg outline-none"
+                        placeholder="Class Name"
                         {...register("name", { required: true })}
                     />
+                    {errors.name && (
+                        <p className="text-red-500 text-sm mt-1">
+                            Enter Class Name
+                        </p>
+                    )}
                 </div>
 
                 {/* Image */}
@@ -124,7 +130,7 @@ const AddClassForm = () => {
                         Image
                     </label>
                     <label
-                        className="w-full block px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full block px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                         htmlFor="profile"
                     >
                         {photoLoading ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-warning"></span></div> : photoURL ? `profile: ${photoURL.image.name}` : 'Choose Photo'}
@@ -145,17 +151,24 @@ const AddClassForm = () => {
 
                 {/* description */}
                 <div>
-                    <label className="block font-medium mb-1 text-black">Description</label>
+                    <label className="block font-medium mb-1 ">Description</label>
                     <textarea
-                        className="textarea textarea-bordered w-full"
+                        className="w-full py-2 px-4 border border-main rounded-lg outline-none resize-none"
+                        placeholder="Description"
+                        rows={10}
                         {...register("description", { required: true })}
                     />
+                    {errors.description && (
+                        <p className="text-red-500 text-sm mt-1">
+                            Give a Description
+                        </p>
+                    )}
                 </div>
 
 
                 {/* category */}
                 <div>
-                    <label className="block font-medium mb-1 text-black">Category</label>
+                    <label className="block font-medium mb-1 ">Category</label>
                     <Controller
                         name="category"
                         control={control}
@@ -164,13 +177,37 @@ const AddClassForm = () => {
                                 {...field}
                                 options={categoryOptions}
                                 className="w-full "
+                                styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        borderColor:'var(--main)',
+                                        outline:'transparent'
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: "var(--thin-black)", // ✅ selected text color fixed
+                                    }),
+                                }}
                             />
                         )}
                     />
                 </div>
 
                 <div>
-                    <button type="submit" className="btn btn-main w-full mt-4">
+                    <button type="submit" className="btn bg-main border-none outline-none shadow-none w-full mt-4">
                         Add Class
                     </button>
                 </div>

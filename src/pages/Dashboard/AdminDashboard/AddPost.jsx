@@ -53,7 +53,7 @@ const AddPost = () => {
     }
 
     return (
-        <div className="max-w-2xl mx-auto my-10 p-6 bg-white shadow-lg rounded-2xl border border-gray-200">
+        <div className="max-w-2xl mx-auto my-10 p-6 shadow-lg rounded-2xl border border-gray-200">
             <h2 className="text-2xl font-bold text-center mb-6 text-main">
                 ✍️ Create a New Post
             </h2>
@@ -66,7 +66,7 @@ const AddPost = () => {
                         type="text"
                         {...register("title", { required: true })}
                         placeholder="Enter Post Title"
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-main text-black outline-none"
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-main outline-none"
                     />
                     {errors?.title && (
                         <p className="text-red-500 text-sm mt-1">⚠ Title is required</p>
@@ -80,7 +80,7 @@ const AddPost = () => {
                         {...register("content", { required: true })}
                         placeholder="Write your content here..."
                         rows={6}
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-main text-black outline-none"
+                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-main outline-none"
                     ></textarea>
                     {errors?.content && (
                         <p className="text-red-500 text-sm mt-1">⚠ Content is required</p>

@@ -36,34 +36,33 @@ const TrainerBooking = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto p-6 space-y-10 text-black">
+        <div className="max-w-5xl mx-auto p-6 space-y-10">
             <h1 className="text-3xl font-bold text-main">Trainer Booking</h1>
 
             {/* Trainer Info */}
-            <div className="bg-white p-6 rounded-2xl shadow-md flex items-center gap-6">
-                <img
-                    src={trainer.profileImage}
-                    alt={trainer.fullName}
-                    className="w-24 h-24 rounded-2xl object-cover"
-                />
-                <div>
-                    <h2 className="text-2xl font-semibold">{trainer.fullName}</h2>
-                    <p className="text-gray700 mt-1">Selected Slot: {slot.availableTimes}</p>
+            <div className=" p-6 rounded-2xl shadow-md border border-gray-200">
+                <div className="flex items-center gap-6 mb-5">
+                    <img
+                        src={trainer.profileImage}
+                        alt={trainer.fullName}
+                        className="w-24 h-24 rounded-2xl object-cover"
+                    />
+                    <div>
+                        <h2 className="text-2xl font-semibold">{trainer.fullName}</h2>
+                        <p className="text-gray700 mt-1">Selected Slot: {slot.availableTimes}</p>
+                    </div>
                 </div>
-            </div>
-
-            {/* Classes */}
-            <div className="bg-white p-6 rounded-2xl shadow-md space-y-4">
+                {/* Classes */}
                 <h3 className="text-xl font-semibold text-main">Class:</h3>
                 <ul className="list-none list-inside">
-                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Class Name: </span>{slot.className}</li>
-                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Available Days: </span>{slot.availableDays?.join(', ')}</li>
-                    <li className="text-gray700] text-main font-bold"><span className=" text-black">Available Time: </span>{slot.availableTimes}</li>
+                    <li className="text-gray700] ">Class Name: <span className="text-main font-bold"> {slot.className}</span></li>
+                    <li className="text-gray700] ">Available Days: <span className="text-main font-bold">{slot.availableDays?.join(', ')}</span></li>
+                    <li className="text-gray700] ">Available Time: <span className="text-main font-bold"> {slot.availableTimes}</span></li>
                 </ul>
             </div>
 
             {/* Packages */}
-            <div className="bg-white p-6 rounded-2xl shadow-md space-y-4">
+            <div className="rounded-2xl space-y-4">
                 <h3 className="text-xl font-semibold text-main">Membership Packages:</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                     {packages.map((pkg, idx) => (

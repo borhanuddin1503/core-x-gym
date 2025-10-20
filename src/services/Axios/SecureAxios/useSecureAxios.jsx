@@ -6,6 +6,7 @@ const secureAxios = axios.create({
     baseURL: "https://core-x-server.vercel.app",
 });
 
+
 const useSecureAxios = () => {
     const { user } = UseAuth();
 

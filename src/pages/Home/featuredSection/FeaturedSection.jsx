@@ -4,13 +4,13 @@ import FeaturedCard from "./FeaturedCard";
 
 const FeaturedSection = () => {
     return (
-        <section className="py-20  rounded-2xl relative px-4 md:px-16" data-aos="zoom-in-up">
+        <section className="py-10 max-w-7xl mx-auto rounded-2xl relative px-4" data-aos="zoom-in-up">
             {/* Section Heading */}
             <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray700">
+                <h2 className="text-4xl  font-bold text-gray700">
                     Why Choose <span className="text-yellow-500">Our Gym</span>
                 </h2>
-                <p className="text-gray700 mt-4 max-w-2xl mx-auto">
+                <p className="text-gray700 mt-2 max-w-2xl mx-auto">
                     Explore the key features that make our gym the perfect place for
                     your fitness journey.
                 </p>

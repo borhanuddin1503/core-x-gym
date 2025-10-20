@@ -32,7 +32,7 @@ const Charts = () => {
 
 
     return (
-        <div className="bg-white shadow-xl rounded-2xl p-6  w-full">
+        <div className=" shadow-xl rounded-2xl p-6  w-full">
             <div>
                 <h3 className="text-xl font-semibold mb-4 text-main text-center">Members Comparison</h3>
                 <div className="flex items-center justify-center">

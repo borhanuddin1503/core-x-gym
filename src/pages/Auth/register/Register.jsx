@@ -9,6 +9,7 @@ import UseAuth from "../../../custom hooks/UseAuth";
 import useToast from "../../../custom hooks/useToast";
 import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
 import { HeadProvider, Meta, Title } from "react-head";
+import useTheme from "../../../custom hooks/useTheme";
 
 
 const Register = () => {
@@ -20,6 +21,7 @@ const Register = () => {
     const axiosInstency = useAxiosInstency();
     const navigate = useNavigate();
     const { setToastMsg } = useToast();
+    const {theme} = useTheme();
 
 
 
@@ -91,7 +93,7 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center text-black">
+        <div className="min-h-screen flex items-center justify-center">
             <HeadProvider>
                 <Title>Register | CoreX-Gym</Title>
                 <Meta name="description" content="Register of coreX-gym" />
@@ -101,7 +103,7 @@ const Register = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden"
+                className={`shadow-2xl rounded-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden ${theme === 'dark' && 'border border-gray-500'}`}
             >
                 {/* Left: Animation */}
                 <div className="md:w-1/2 bg-gradient-to-tr from-pink-500 to-purple-600 md:flex items-center justify-center p-6 hidden ">

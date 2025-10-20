@@ -9,33 +9,30 @@
 
 :root {
     --main: #FDC700;
-    --stroke: #DADADA;
-    --white: white;
     --black: black;
-    --cream: #FAFDF0;
-    --gray200: #CFC6C5;
-    --silver: #BCC6CC;
-    --thin-yellow: #FEFCE8;
     --root-bg: #F8F9FA;
-    --gray700: #4a5568;
+    --class-card-bg: #f2f2f2;
+    --thin-black:#212121;
 }
 
 .dark {
     --main: #FDC700;
-    --stroke: #2D3748;
-    --white: #1A202C;
     --black: #EDF2F7;
-    --cream: #1C1C1C;
-    --gray200: #718096;
-    --silver: #4A5568;
-    --thin-yellow: #FEFCE8;
     --root-bg: #1A202C;
-    --gray700: #A0AEC0;
+    --class-card-bg: #212121;
+    --thin-black:#f2f2f2;
+
 }
 
+
+
 @theme {
-    --font-jakarta: 'jakarta', 'sans-serif';
     --color-main: var(--main);
+    --color-class-card-bg: var(--class-card-bg);
+    --color-root-bg: var(--root-bg);
+    --font-jakarta: 'jakarta', 'sans-serif';
+    --color-black-text:var(--black);
+    /* 
     --color-stroke: var(--stroke);
     --color-white: var(--white);
     --color-black: var(--black);
@@ -44,10 +41,16 @@
     --color-silver: var(--silver);
     --color-thin-yellow: var(--thin-yellow);
     --color-root-bg: var(--root-bg);
-    --color-gray700: var(--gray700)
+    --color-gray700: var(--gray700) */
 }
 
-
+html,
+body {
+    color-scheme: light dark;
+    background: var(--root-bg);
+    color: var(--black);
+    transition: background-color 0.3s, color 0.3s;
+}
 
 
 @media (max-width:1400px) {

@@ -101,7 +101,7 @@ const BeATrainer = () => {
         try {
             setLoading(true)
             const { className, availableDays, availableTimes, ...rest } = data;
-        
+
             const finalData = {
                 ...rest,
                 profileImage: photo.url,
@@ -171,7 +171,7 @@ const BeATrainer = () => {
                         type="text"
                         {...register("fullName", { required: true })}
                         placeholder="Enter your full name"
-                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                     />
                     {errors.fullName && (
                         <p className="text-red-500 text-sm mt-1">Full name is required</p>
@@ -186,7 +186,7 @@ const BeATrainer = () => {
                         {...register("email", { required: true })}
                         readOnly
                         value={user?.email}
-                        className="w-full px-4 py-2 rounded-lg border border-main bg-gray-100 text-gray-500 cursor-not-allowed"
+                        className="w-full px-4 py-2 rounded-lg border border-main  text-gray-500 cursor-not-allowed"
                     />
                 </div>
 
@@ -197,7 +197,7 @@ const BeATrainer = () => {
                         type="number"
                         {...register("age", { required: true })}
                         placeholder="Enter your age"
-                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                     />
                 </div>
 
@@ -207,7 +207,7 @@ const BeATrainer = () => {
                         Profile
                     </label>
                     <label
-                        className="w-full block px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full block px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                         htmlFor="profile"
                     >
                         {photoLoading ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-warning"></span></div> : photo ? `profile: ${photo.image.name}` : 'Choose Photo'}
@@ -233,7 +233,7 @@ const BeATrainer = () => {
                         {skillsOptions.map((skill) => (
                             <label
                                 key={skill}
-                                className="flex items-center gap-2 bg-white p-2 rounded-lg cursor-pointer  transition"
+                                className="flex items-center gap-2 p-2 rounded-lg cursor-pointer  transition"
                             >
                                 <input
                                     type="checkbox"
@@ -241,7 +241,7 @@ const BeATrainer = () => {
                                     {...register("skills", { required: true })}
                                     className="checkbox checkbox-accent"
                                 />
-                                <span className="text-black">{skill}</span>
+                                <span className="">{skill}</span>
                             </label>
                         ))}
                     </div>
@@ -267,8 +267,23 @@ const BeATrainer = () => {
                                 components={animatedComponents}
                                 options={daysOptions}
                                 isMulti
-                                className=""
                                 placeholder="Select days..."
+                                styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                }}
                             />
                         )}
                     />
@@ -292,6 +307,28 @@ const BeATrainer = () => {
                                 options={timeOptions}
                                 components={animatedComponents}
                                 placeholder="Select Times..."
+                                styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: "var(--thin-black)",
+                                    }),
+                                }}
                             />
                         )}
                     />
@@ -314,6 +351,28 @@ const BeATrainer = () => {
                                 {...field}
                                 options={classOptions}
                                 placeholder="Select class..."
+                                 styles={{
+                                    option: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)"
+                                    }),
+                                    control: (base, state) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                    }),
+                                    menu: (base) => ({
+                                        ...base,
+                                        backgroundColor: "var(--root-bg)",
+                                        color: "var(--thin-black)",
+                                        margin: 0,
+                                        padding: 0,
+                                    }),
+                                    singleValue: (base) => ({
+                                        ...base,
+                                        color: "var(--thin-black)", 
+                                    }),
+                                }}
                             />
                         )}
                     />
@@ -330,7 +389,7 @@ const BeATrainer = () => {
                         placeholder="Enter your Phone Number"
                         rows="3"
                         type="number"
-                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                     ></input>
                     {errors.phone && (
                         <p className="text-red-500 text-sm mt-1">Phone Number is required</p>
@@ -343,7 +402,7 @@ const BeATrainer = () => {
                         type="number"
                         {...register("experience", { required: true })}
                         placeholder="How many years have you experience"
-                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main text-black"
+                        className="w-full px-4 py-2 rounded-lg border border-main focus:ring-2 focus:ring-main "
                     ></input>
                     {errors.experience && (
                         <p className="text-red-500 text-sm mt-1">Experience is required</p>

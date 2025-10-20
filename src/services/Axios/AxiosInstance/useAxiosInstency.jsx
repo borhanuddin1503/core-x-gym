@@ -4,6 +4,8 @@ const axiosInstency = axios.create({
     baseURL: 'https://core-x-server.vercel.app'
 });
 
+// base url
+// https://core-x-server.vercel.app
 
 const useAxiosInstency = () => {
     return axiosInstency

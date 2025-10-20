@@ -21,11 +21,6 @@ const ApplyedTrainer = () => {
         }
     });
 
-
-
-
-   
-
     if (isLoading) return <Loading></Loading>
 
     if (appliedTrainers.length === 0) {
@@ -35,9 +30,9 @@ const ApplyedTrainer = () => {
     return (
         <div className="overflow-x-auto p-4">
             <h2 className="text-2xl font-bold mb-4 text-main/80">Applied Trainers</h2>
-            <table className="table w-full text-black">
+            <table className="table-sm w-full ">
                 <thead>
-                    <tr className="text-black">
+                    <tr className="text-left bg-main">
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -47,7 +42,7 @@ const ApplyedTrainer = () => {
                 </thead>
                 <tbody>
                     {appliedTrainers?.map((applicant, index) => (
-                        <tr key={applicant._id}>
+                        <tr key={applicant._id} className="border-b border-gray-500">
                             <td>{index + 1}</td>
                             <td>{applicant.fullName}</td>
                             <td>{applicant.email}</td>

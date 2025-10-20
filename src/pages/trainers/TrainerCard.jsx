@@ -6,7 +6,7 @@ const TrainerCard = ({ trainer }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white border border-main rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6 flex flex-col items-center text-center relative justify-between">
+    <div className=" border border-main rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-6 flex flex-col items-center text-center relative justify-between">
 
       <div className="flex flex-col items-center">
         {/* Experience Badge */}
@@ -27,22 +27,9 @@ const TrainerCard = ({ trainer }) => {
         </div>
 
         {/* Trainer Info */}
-        <h2 className="text-xl font-bold text-black">{trainer.fullName}</h2>
-        <p className="text-gray-500 text-sm">{trainer.skills?.join(", ")}</p>
-
-        {/* Available Info */}
-        <div className="mt-3 bg-white rounded-xl p-3 w-full text-sm max-h-28 overflow-y-auto">
-          <p className="font-semibold text-black">Available:</p>
-          {trainer.slots.map((slot, index) => (
-            <div key={index} className="mt-2 border-b border-gray-300 pb-2 last:border-b-0">
-              <p className="text-black font-medium">Class: {slot.className}</p>
-              <p className="text-black">Days: {slot.availableDays?.join(", ")}</p>
-              <p className="text-black">Time: {Array.isArray(slot.availableTimes) ? slot.availableTimes.join(", ") : slot.availableTimes}</p>
-            </div>
-          ))}
-        </div>
-
-
+        <h2 className="text-xl font-bold">{trainer.fullName}</h2>
+        <p className="text-gray-400 text-sm">{trainer.skills?.join(", ")}</p>
+        
         {/* Social Icons */}
         <div className="flex gap-4 mt-4 text-yellow-500">
           <FaFacebook className="cursor-pointer hover:text-yellow-600" />

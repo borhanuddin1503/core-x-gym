@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const AboutSection = () => {
     return (
-        <section className="py-20 px-4 md:px-16 rounded-2xl" data-aos="zoom-in-up">
+        <section className="py-10 max-w-7xl mx-auto px-4 rounded-2xl" data-aos="zoom-in-up">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-lg" >
@@ -22,10 +22,10 @@ const AboutSection = () => {
 
                 {/* Text Content */}
                 <div className="space-y-6" >
-                    <h2 className="text-4xl font-bold text-black">
+                    <h2 className="text-3xl font-bold ">
                         About <span className="text-main">Our Gym</span>
                     </h2>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-500 text-lg">
                         Our gym is dedicated to helping individuals achieve their fitness goals
                         with expert trainers, state-of-the-art equipment, and a supportive community.
                         Whether you are a beginner or a professional athlete, we have something
@@ -36,15 +36,15 @@ const AboutSection = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
                         <div className="flex items-center gap-2 bg-thin-yellow p-4 rounded-xl shadow hover:shadow-lg transition">
                             <Users className="w-6 h-6 text-main" />
-                            <span className="text-gray-700 font-semibold">Community Support</span>
+                            <span className="text-gray-500 font-semibold">Community Support</span>
                         </div>
                         <div className="flex items-center gap-2 bg-thin-yellow p-4 rounded-xl shadow hover:shadow-lg transition">
                             <Award className="w-6 h-6 text-main" />
-                            <span className="text-gray-700 font-semibold">Certified Trainers</span>
+                            <span className="text-gray-500 font-semibold">Certified Trainers</span>
                         </div>
                         <div className="flex items-center gap-2 bg-thin-yellow p-4 rounded-xl shadow hover:shadow-lg transition">
                             <Heart className="w-6 h-6 text-main" />
-                            <span className="text-gray-700 font-semibold">Health Tracking</span>
+                            <span className="text-gray-500 font-semibold">Health Tracking</span>
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@ const AboutSection = () => {
                         to="/classes"
                     >
                         <button
-                            className="inline-block mt-6 px-6 py-3 bg-main text-black font-semibold rounded-lg hover:bg-yellow-500 transform hover:scale-102 transition cursor-pointer duration-300 "
+                            className="inline-block mt-6 px-6 py-3 bg-main text-white font-semibold rounded-lg hover:bg-yellow-500 transform hover:scale-102 transition cursor-pointer duration-300 "
                         >
                             Explore Classes
                         </button>

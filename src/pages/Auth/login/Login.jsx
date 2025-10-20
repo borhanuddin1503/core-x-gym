@@ -8,6 +8,7 @@ import loginImg from '../../../assets/images/login.svg'
 import { HeadProvider, Meta, Title } from "react-head";
 import { FcGoogle } from "react-icons/fc"
 import useAxiosInstency from "../../../services/Axios/AxiosInstance/useAxiosInstency";
+import useTheme from "../../../custom hooks/useTheme";
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -15,7 +16,8 @@ const Login = () => {
     const navigate = useNavigate();
     const { setToastMsg } = useToast();
     const [error, setError] = useState("");
-    const axiosInstancy = useAxiosInstency()
+    const axiosInstancy = useAxiosInstency();
+    const {theme} = useTheme();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -86,7 +88,7 @@ const Login = () => {
     };
 
     return (
-        <div className="h-[calc(100vh-76px)] flex items-center justify-center text-black">
+        <div className={`h-[calc(100vh-76px)] flex items-center justify-center`}>
 
             <HeadProvider>
                 <Title>Log In | CoreX-Gym</Title>
@@ -97,7 +99,7 @@ const Login = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="bg-white shadow-2xl rounded-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden"
+                className={`shadow-2xl rounded-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden ${theme === 'dark' && 'border border-gray-500'}`}
             >
                 {/* Left: Animation */}
                 <div className="md:w-1/2 bg-gradient-to-tr from-indigo-500 to-pink-500 sm:flex items-center justify-center p-6 hidden">
@@ -112,7 +114,7 @@ const Login = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Email */}
-                        <div className="flex items-center border rounded-xl px-3 border-black focus-within:border-indigo-400">
+                        <div className="flex items-center border rounded-xl px-3 focus-within:border-indigo-400">
                             <FaEnvelope className="text-gray-400 mr-2" />
                             <input
                                 type="email"
@@ -124,7 +126,7 @@ const Login = () => {
                         </div>
 
                         {/* Password */}
-                        <div className="flex items-center border rounded-xl px-3 border-black focus-within:border-indigo-400">
+                        <div className="flex items-center border rounded-xl px-3 focus-within:border-indigo-400">
                             <FaLock className="text-gray-400 mr-2" />
                             <input
                                 type="password"

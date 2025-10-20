@@ -44,7 +44,7 @@ const ProfileUpdate = () => {
                 photoURL,
             });
 
-            await secureAxios.patch(`/users/updateProfile/${user.email}` , {
+            await secureAxios.patch(`/users/updateProfile/${user.email}`, {
                 displayName: data.name,
                 photoURL,
             })
@@ -64,52 +64,52 @@ const ProfileUpdate = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Name */}
                 <div>
-                    <label className="block mb-1 font-semibold text-black">Name</label>
+                    <label className="block mb-1 font-semibold ">Name</label>
                     <input
                         type="text"
                         defaultValue={user?.displayName}
                         {...register("name")}
-                        className="input input-bordered w-full"
+                        className="w-full border py-2 px-4 rounded-4xl outline-none"
                     />
                 </div>
 
                 {/* Email (read-only) */}
                 <div>
-                    <label className="block mb-1 font-semibold text-black">Email</label>
+                    <label className="block mb-1 font-semibold">Email</label>
                     <input
                         type="email"
                         value={user?.email}
                         readOnly
-                        className="input input-bordered w-full cursor-not-allowed"
+                        className="w-full cursor-not-allowed border py-2 px-4 rounded-4xl outline-none"
                     />
                 </div>
 
                 {/* Profile Picture Upload */}
                 <div>
-                    <label className="block mb-1 font-semibold text-black" >Profile Picture</label>
+                    <label className="block mb-1 font-semibold " >Profile Picture</label>
                     <input
                         type="file"
                         accept="image/*"
                         {...register("photo")}
-                        className="file-input file-input-bordered w-full"
+                        className="w-full border py-2 px-4 rounded-4xl outline-none cursor-pointer"
                     />
                 </div>
 
                 {/* Last Login */}
                 <div>
-                    <label className="block mb-1 font-semibold text-black">Last Login</label>
+                    <label className="block mb-1 font-semibold">Last Login</label>
                     <input
                         type="text"
                         value={new Date(user?.metadata?.lastSignInTime).toLocaleString() || "N/A"}
                         readOnly
-                        className="input input-bordered w-full cursor-not-allowed"
+                        className="w-full border py-2 px-4 rounded-4xl outline-none"
                     />
                 </div>
 
                 {/* Submit */}
                 <button
                     type="submit"
-                    className="btn bg-main text-white w-full"
+                    className="py-2 px-4 bg-main text-white rounded-4xl w-full"
                     disabled={loading}
                 >
                     {loading ? "Updating..." : "Update Profile"}

@@ -8,24 +8,30 @@ import Loading from "../../shared/Loading/Loading";
 import { Dumbbell, SearchCheck } from "lucide-react";
 import ClassCard from "./ClassCard";
 import { HeadProvider, Meta, Title } from "react-head";
+import { IoArrowBack, IoArrowForward, IoArrowForwardOutline } from "react-icons/io5";
 
 const AllClasses = () => {
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPage, setTotalPage] = useState(1);
     const [search, setSearch] = useState(""); // <-- search state
     const secureAxios = useSecureAxios();
     const { observerLoading } = UseAuth();
+    const [sortByBooked, setSortByBooked] = useState("");
+
 
     // React Query দিয়ে data fetch
     const { data: classes = [], isLoading } = useQuery({
-        queryKey: ["classes", page, search], // search depend korbe
+        queryKey: ["classes", page, search, sortByBooked],
         enabled: !observerLoading,
         queryFn: async () => {
-            const res = await secureAxios.get(`/classes?page=${page}&search=${search}`);
-            setTotalPages(res.data.totalPages || 1);
-            return res.data.classes; // API কী রিটার্ন করছে সেইমতে
+            const res = await secureAxios.get(
+                `/classes?page=${page}&search=${search}&sort=${sortByBooked}`
+            );
+            setTotalPage(res.data.totalPages || 1);
+            return res.data.classes;
         },
     });
+
 
     // handle search
     const handleSearch = (e) => {
@@ -33,7 +39,7 @@ const AllClasses = () => {
         const form = e.target;
         const searchValue = form.search.value.trim();
         setSearch(searchValue);
-        setPage(1); 
+        setPage(1);
     };
 
     if (isLoading) {
@@ -60,60 +66,79 @@ const AllClasses = () => {
                 All Classes
             </h2>
 
-            {/* Search Box */}
-            <form onSubmit={handleSearch} className="mb-6">
+            <form onSubmit={handleSearch} className="mb-6 flex justify-between">
+                {/* Search Box */}
                 <div className="md:max-w-100 flex border border-main rounded-[10px] items-center py-2 px-4 gap-4">
                     <input
                         type="text"
                         id="search"
-                        className="border-none outline-none w-full text-black"
+                        className="border-none outline-none w-full "
                         placeholder="Search for a Class"
                     />
                     <button type="submit">
                         <SearchCheck className="text-main" />
                     </button>
                 </div>
+
+                {/* Sorting Dropdown */}
+                <select
+                    value={sortByBooked}
+                    onChange={(e) => setSortByBooked(e.target.value)}
+                    className="border bg-root-bg rounded-[10px] px-4 py-2 py border-main outline-none"
+                >
+                    <option value="">All</option>
+                    <option value="booked">Booked</option>
+                    <option value="notBooked">Not Booked</option>
+                </select>
             </form>
 
             {/* Classes Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2 mb-8">
                 {classes.map((cls) => (
                     <ClassCard key={cls._id} cls={cls}></ClassCard>
                 ))}
             </div>
 
             {/* Pagination */}
-            <div className="flex justify-center items-center mt-12 gap-2">
-                <button
-                    disabled={page === 1}
-                    onClick={() => setPage((prev) => prev - 1)}
-                    className="px-4 py-2 rounded-lg bg-[#0f172a] text-[#22d3ee] font-medium border border-[#22d3ee] shadow hover:bg-[#1e293b] disabled:opacity-40 cursor-pointer"
-                >
-                    Prev
-                </button>
-
-                {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                        key={i + 1}
-                        onClick={() => setPage(i + 1)}
-                        className={`px-4 py-2 rounded-lg font-medium transition-all border cursor-pointer ${
-                            page === i + 1
-                                ? "bg-main text-black border-main shadow-lg"
-                                : "bg-[#0f172a] text-gray-300 border-gray-600 hover:bg-[#1e293b] hover:text-main"
-                        }`}
-                    >
-                        {i + 1}
-                    </button>
-                ))}
-
-                <button
-                    disabled={page === totalPages}
-                    onClick={() => setPage((prev) => prev + 1)}
-                    className="px-4 py-2 rounded-lg bg-[#0f172a] text-[#22d3ee] font-medium border border-[#22d3ee] shadow hover:bg-[#1e293b] disabled:opacity-40 cursor-pointer"
-                >
-                    Next
-                </button>
-            </div>
+             <div className="text-center flex gap-2 items-center justify-center">
+                            {/* handlePrevButton  */}
+                            <button
+                                onClick={() => setPage((prev) => prev - 1)}
+                                className="px-4 py-1 text-xs rounded-4xl text-main font-medium border border-main shadow disabled:cursor-not-allowed cursor-pointer flex items-center gap-2"
+                                disabled={page === 1}
+                            >   
+                                <IoArrowBack />
+                                prev
+                            </button>
+            
+            
+                            {/* manage page click */}
+                            {
+                                Array.from({ length: totalPage }, (_, i) => (
+                                    <button
+                                        key={i + 1}
+                                        onClick={() => setPage(i + 1)}
+                                        className={`w-7 h-7 rounded-full font-medium transition-all text-xs border cursor-pointer ${page === i + 1
+                                            ? "bg-main border-main shadow-lg text-white"
+                                            : "border border-main text-main hover:text-white hover:bg-main"
+                                            }`}
+                                    >
+                                        {i + 1}
+                                    </button>)
+                                )
+                            }
+            
+            
+                            {/* next button */}
+                            <button
+                                onClick={() => setPage((prev) => prev + 1)}
+                                className="px-4 py-1 text-xs rounded-4xl text-main font-medium border border-main shadow disabled:cursor-not-allowed cursor-pointer flex items-center gap-2"
+                                disabled={page === totalPage}
+                            >
+                                Next
+                                <IoArrowForwardOutline />
+                            </button>
+                        </div>
         </div>
     );
 };
