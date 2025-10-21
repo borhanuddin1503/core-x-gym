@@ -11,7 +11,7 @@ const Banner = () => {
         //     backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url(${bannerImg})`,
         // }}
         >
-            <div className='max-w-7xl px-4 mx-auto flex items-center gap-5'>
+            <div className='max-w-7xl px-4 mx-auto flex flex-col md:flex-row items-center gap-5'>
                 {/* text content */}
                 <div className=" px-4 md:px-0 max-w-2xl space-y-4 flex-1">
                     {/* Heading */}
@@ -33,7 +33,7 @@ const Banner = () => {
                     </Link>
                 </div>
                 {/* image section */}
-                <div className='flex-1'>
+                <div className='flex-1 hidden md:block'>
                     <img src={component1} alt="" className='h-150'/>
                 </div>
             </div>

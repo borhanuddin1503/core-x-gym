@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
-import { 
-  FaHome, FaHistory, FaUserEdit, FaUsers, FaCalendarAlt, FaPlusCircle, 
-  FaWallet, FaNewspaper, FaTasks, FaChartLine 
+import {
+  FaHome, FaHistory, FaUserEdit, FaUsers, FaCalendarAlt, FaPlusCircle,
+  FaWallet, FaNewspaper, FaTasks, FaChartLine
 } from "react-icons/fa";
 import Logo from "../shared/Logo";
 import useUserRole from "../custom hooks/useUserRole";
@@ -10,15 +10,18 @@ import { HeadProvider, Meta, Title } from "react-head";
 import Navbar from "../shared/Navbar/Navbar";
 import Footer from "../shared/Footer/Footer";
 import useTheme from "../custom hooks/useTheme";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import ThemeController from "../shared/Navbar/ThemeController";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
   const inputRef = useRef();
-  const {pathname} = useLocation();
-  const {theme} = useTheme();
+  const { pathname } = useLocation();
+  const { theme } = useTheme();
 
   const navItems = [
-    { to: "/dashboard", icon: FaHome, label: "Home" },
+    { to: "/", icon: FaHome, label: "Home" },
+    { to: "/dashboard", icon: MdOutlineSpaceDashboard, label: "Dashboard" },
     { to: "/dashboard/activityLog", icon: FaHistory, label: "Activity Log" },
     { to: "/dashboard/profile", icon: FaUserEdit, label: "Update Profile" },
     { to: "/dashboard/bookedTrainers", icon: FaUsers, label: "Booked Trainers" },
@@ -45,7 +48,7 @@ const DashboardLayout = () => {
         <NavLink
           to={item.to}
           className={() =>
-            `flex items-center gap-3 px-4 py-2 transition text-xs rounded-lg font-medium text-gray700 hover:bg-main/20 hover:text-main ${pathname === item.to && "bg-main/30 text-main" 
+            `flex items-center gap-3 px-4 py-2 transition text-xs rounded-lg font-medium text-gray700 hover:bg-main/20 hover:text-main ${pathname === item.to && "bg-main/30 text-main"
             }`
           }
           onClick={() => {
@@ -60,7 +63,6 @@ const DashboardLayout = () => {
 
   return (
     <div className="relative">
-      <Navbar></Navbar>
       <div className="drawer lg:drawer-open">
         <HeadProvider>
           <Title>Dashboard | CoreX-Gym</Title>
@@ -84,6 +86,7 @@ const DashboardLayout = () => {
               </label>
             </div>
             <div className="flex-1 text-center font-bold text-xl text-main">Dashboard</div>
+            <div className="p-2"><ThemeController></ThemeController></div>
           </div>
 
           {/* Page content */}
@@ -93,11 +96,15 @@ const DashboardLayout = () => {
         </div>
 
         {/* Sidebar */}
-        <div className={`drawer-side shadow-lg ${theme === 'dark' && 'border-r border-gray-500'}`}>
+        <div className={`drawer-side bg-root-bg shadow-lg ${theme === 'dark' && 'border-r border-gray-500'}`}>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <div className="overflow-y-auto flex flex-col justify-between  w-80 p-4">
             <div>
-              <Logo></Logo>
+              <div className="flex justify-between items-center">
+                <Logo></Logo>
+                <div className="hidden lg:block"><ThemeController></ThemeController></div>
+              </div>
+
               <ul className="menu mt-6 space-y-1">{renderNavItems(navItems)}</ul>
 
               {!roleLoading && role === "trainer" && (

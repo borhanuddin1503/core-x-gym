@@ -6,7 +6,6 @@ import {
     Wallet,
     Calendar,
     Newspaper,
-    CheckCircle,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../../custom hooks/UseAuth";
@@ -32,15 +31,15 @@ const DashHome = () => {
                     secureAxios("/trainers"),
                     secureAxios("/classes/withoutTrainers"),
                     secureAxios("/admin/total-balance"),
-                    secureAxios("/posts"),
                 ]);
                 return {
                     totalUsers: users.data.length,
                     totalTrainers: trainers.data.length,
                     totalClasses: classes.data.length,
                     totalRevenue: revenue.data.totalBalance,
-                    totalPosts: posts.data.totalData,
                 };
+            }else{
+                return {}
             }
         },
     });
@@ -59,15 +58,14 @@ const DashHome = () => {
         { icon: Dumbbell, title: "Total Trainers", value: stats.totalTrainers },
         { icon: Calendar, title: "Classes", value: stats.totalClasses },
         { icon: Wallet, title: "Revenue", value: `$${stats.totalRevenue}` },
-        { icon: Newspaper, title: "Posts", value: stats.totalPosts },
     ]
 
     return (
         <div className="min-h-[calc(100vh-60px)]">
             {role === 'admin' ?
-                <div className="flex gap-5">
+                <div className="flex gap-5 flex-col md:flex-row">
                     {/* Cards Grid */}
-                    <div className="flex flex-col gap-4 w-2/12">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-4 md:w-2/12">
                         {cards.map((card, i) => (
                             <motion.div
                                 key={i}
@@ -88,7 +86,7 @@ const DashHome = () => {
                             </motion.div>
                         ))}
                     </div>
-                    <div className="w-10/12">
+                    <div className="md:w-10/12">
                         <PaymentChart></PaymentChart>
                     </div>
                 </div> :

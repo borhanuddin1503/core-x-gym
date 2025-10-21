@@ -52,7 +52,7 @@ const PaymentChart = () => {
     );
 
   return (
-    <div className={`p-5 rounded-xl shadow-md ${theme === 'dark' && 'border border-gray-500'}`}>
+    <div className={`p-5 py-25 rounded-xl shadow-md ${theme === 'dark' && 'border border-gray-500'}`}>
       <h2 className="text-xl font-semibold mb-4 text-center text-main">
         Monthly Sales Overview
       </h2>
