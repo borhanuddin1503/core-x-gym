@@ -32,16 +32,6 @@
     --color-root-bg: var(--root-bg);
     --font-jakarta: 'jakarta', 'sans-serif';
     --color-black-text:var(--black);
-    /* 
-    --color-stroke: var(--stroke);
-    --color-white: var(--white);
-    --color-black: var(--black);
-    --color-cream: var(--cream);
-    --color-gray200: var(--gray200);
-    --color-silver: var(--silver);
-    --color-thin-yellow: var(--thin-yellow);
-    --color-root-bg: var(--root-bg);
-    --color-gray700: var(--gray700) */
 }
 
 html,
@@ -50,6 +40,18 @@ body {
     background: var(--root-bg);
     color: var(--black);
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Default (light mode) placeholder color */
+::placeholder {
+  color: #555; 
+  opacity: 1; 
+}
+
+/* Dark mode placeholder color */
+.dark ::placeholder {
+  color: #ccc; 
+  opacity: 1;
 }
 
 

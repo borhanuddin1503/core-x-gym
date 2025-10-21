@@ -61,11 +61,11 @@ const DashboardLayout = () => {
         <NavLink
           to={item.to}
           className={() =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200 
+            `flex items-center gap-3 px-4 py-2 rounded-lg font-medium text-sm transition-colors 
              ${
                pathname === item.to
                  ? "bg-main/20 text-main"
-                 : "text-gray-600 dark:text-gray-300 hover:bg-main/10 hover:text-main"
+                 : "hover:bg-main/10 hover:text-main"
              }`
           }
           onClick={() => {
